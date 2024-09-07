@@ -23,7 +23,7 @@ time.sleep(2)
 last_name_input = driver.find_element(By.ID, 'LastName')
 last_name_input.click()
 last_name_input.send_keys('Pelosi')
-
+# taylor greene -> sta copiando pelosi?
 
 year_dropdown = driver.find_element(By.ID, 'FilingYear')
 year_dropdown.click()
