@@ -1,10 +1,11 @@
+# analyzer.py
 import pdfplumber
 from pdf2image import convert_from_path
 import pytesseract
-from openai import OpenAI
+import openai
 from utils import OPENAI_API_KEY
 
-client = OpenAI(api_key=OPENAI_API_KEY)
+openai.api_key = OPENAI_API_KEY
 
 def extract_text_from_pdf(pdf_file):
     # First, try extracting text with pdfplumber
@@ -30,7 +31,7 @@ def extract_text_from_pdf(pdf_file):
 
 def send_pdf_text_to_gpt4(pdf_text):
     try:
-        response = client.chat.completions.create(
+        response = openai.ChatCompletion.create(
             model="gpt-4",
             messages=[
                 {
@@ -44,7 +45,7 @@ def send_pdf_text_to_gpt4(pdf_text):
                     )
                 }
             ],
-            max_tokens=300,
+            max_tokens=500,
             temperature=0.5
         )
         return response.choices[0].message.content.strip()

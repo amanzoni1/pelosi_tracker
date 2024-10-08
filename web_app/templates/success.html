@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Payment Successful</h2>
+    <p>Your subscription is now active. Thank you!</p>
+    <a href="{{ url_for('account') }}" class="btn btn-primary">Go to Account</a>
+</div>
+{% endblock %}

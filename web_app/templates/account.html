@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Your Account</h2>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>Subscription Status:</strong> {{ user.subscription_status }}</p>
+    {% if user.subscription_status != 'active' %}
+        <a href="{{ url_for('payment.subscribe') }}" class="btn btn-primary">Subscribe Now</a>
+    {% else %}
+        <p>Your subscription is active until {{ user.subscription_end.strftime('%Y-%m-%d') if user.subscription_end else 'N/A' }}.</p>
+    {% endif %}
+</div>
+{% endblock %}

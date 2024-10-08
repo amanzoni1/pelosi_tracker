@@ -1,3 +1,4 @@
+# utils.py
 import os
 from dotenv import load_dotenv
 
@@ -6,15 +7,27 @@ load_dotenv()
 
 # Global constants
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
+
 PUSHOVER_USER_KEY = os.getenv('PUSHOVER_USER_KEY')
 PUSHOVER_API_TOKEN = os.getenv('PUSHOVER_API_TOKEN')
-MAILJET_API_KEY = os.getenv('MAILJET_API_KEY')
-MAILJET_SECRET_KEY = os.getenv('MAILJET_SECRET_KEY')
+
 EMAIL_FROM = os.getenv('EMAIL_FROM')
 EMAIL_FROM_NAME = os.getenv('EMAIL_FROM_NAME')
 
+MAILJET_API_KEY = os.getenv('MAILJET_API_KEY')
+MAILJET_SECRET_KEY = os.getenv('MAILJET_SECRET_KEY')
+WELCOME_TEMPLATE_ID = os.getenv('MAILJET_WELCOME_TEMPLATE_ID')
+UPDATE_TEMPLATE_ID = os.getenv('MAILJET_UPDATE_TEMPLATE_ID')
+
+DATABASE_URL = os.getenv('DATABASE_URL')
+SECRET_KEY = os.getenv('SECRET_KEY')
+FLASK_SECRET_KEY = os.getenv('FLASK_SECRET_KEY')
+
+STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY')
+STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
+
 # Path to the ChromeDriver executable
-CHROME_DRIVER_PATH = '/Users/andreamanzoni/Desktop/code/scripts/pelosi_tracker/chromedriver/chromedriver'
+CHROME_DRIVER_PATH = os.getenv('CHROME_DRIVER_PATH')
 
 # Base URL for scraping
 BASE_URL = 'https://disclosures-clerk.house.gov/FinancialDisclosure'

@@ -1,3 +1,4 @@
+# scraper.py
 import os
 import time
 import requests
@@ -6,10 +7,12 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
-from utils import CHROME_DRIVER_PATH, BASE_URL, BASE_SAVE_DIR, LAST_NAMES
+
+from utils import CHROME_DRIVER_PATH, BASE_URL, BASE_SAVE_DIR, LAST_NAMES, UPDATE_TEMPLATE_ID
 from notifier import send_pushover_notification
 from analyzer import analyze_pdf
-from emailer import send_bulk_emails, generate_email_content, get_recipient_emails
+from emailer import send_transactional_email
+from models import SessionLocal, User 
 
 def initialize_webdriver():
     chrome_options = Options()
@@ -17,6 +20,18 @@ def initialize_webdriver():
     service = Service(executable_path=CHROME_DRIVER_PATH)
     driver = webdriver.Chrome(service=service, options=chrome_options)
     return driver
+
+def send_update_emails(analysis_result, last_name):
+    session = SessionLocal()
+    active_users = session.query(User).filter(User.subscription_status == 'active').all()
+    for user in active_users:
+        variables = {
+            "last_name": last_name,
+            "analysis_result": analysis_result,
+            "user_name": user.email.split('@')[0],
+        }
+        send_transactional_email(user.email, UPDATE_TEMPLATE_ID, variables)
+    session.close()
 
 def scrape_and_download_pdfs():
     driver = initialize_webdriver()
@@ -108,11 +123,8 @@ def scrape_and_download_pdfs():
                         # Analyze the newly downloaded PDF
                         analysis_result = analyze_pdf(pdf_path, last_name)
                         if analysis_result:
-                            # Prepare the email content
-                            subject = f"New Analysis Report for {last_name}"
-                            html_content = generate_email_content(analysis_result, last_name)
-                            recipient_emails = get_recipient_emails()
-                            send_bulk_emails(recipient_emails, subject, html_content)
+                            # Send update emails to active subscribers
+                            send_update_emails(analysis_result, last_name)
                     else:
                         print(f"Failed to download {pdf_name}: HTTP {response.status_code}")
                         failed_pdfs.append(pdf_name)
