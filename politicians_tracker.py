@@ -11,11 +11,22 @@ from openai import OpenAI
 import pdfplumber
 from pdf2image import convert_from_path
 import pytesseract
+from mailjet_rest import Client
 
 load_dotenv()
 
 api_key = os.getenv('OPENAI_API_KEY')
+pushover_user = os.getenv('PUSHOVER_USER_KEY')
+pushover_token = os.getenv('PUSHOVER_API_TOKEN')
+mailjet_api_key = os.getenv('MAILJET_API_KEY')
+mailjet_secret_key = os.getenv('MAILJET_SECRET_KEY')
+email_from = os.getenv('EMAIL_FROM')
+email_from_name = os.getenv('EMAIL_FROM_NAME')
+
+
 client = OpenAI(api_key=api_key)
+mailjet = Client(auth=(mailjet_api_key, mailjet_secret_key), version='v3.1')
+
 
 # Path to the ChromeDriver executable
 chrome_driver_path = '/Users/andreamanzoni/Desktop/code/scripts/pelosi_tracker/chromedriver/chromedriver'
@@ -43,6 +54,81 @@ base_save_dir = os.path.join(os.getcwd(), 'savedPdf')
 # Create the base directory if it doesn't exist
 if not os.path.exists(base_save_dir):
     os.makedirs(base_save_dir)
+
+# Function to send Pushover notification
+def send_pushover_notification(user_key, api_token, message, priority=0, title="New Politicians Action"):
+    url = 'https://api.pushover.net/1/messages.json'
+    
+    params = {
+        'token': api_token,
+        'user': user_key,
+        'message': message,
+        'title': title,
+        'priority': priority
+    }
+
+    try:
+        response = requests.post(url, data=params)
+        if response.status_code == 200:
+            print('Notification sent successfully')
+        else:
+            print(f"Failed to send notification: {response.status_code}, {response.text}")
+    except Exception as e:
+        print(f"Error sending notification: {e}")
+
+# Function to send emails
+def send_email(to_emails, subject, html_content):
+    messages = []
+    for email in to_emails:
+        messages.append({
+            "From": {
+                "Email": email_from,
+                "Name": email_from_name
+            },
+            "To": [
+                {
+                    "Email": email,
+                    "Name": email.split('@')[0]
+                }
+            ],
+            "Subject": subject,
+            "HTMLPart": html_content
+        })
+
+    data = {
+        'Messages': messages
+    }
+
+    result = mailjet.send.create(data=data)
+    if result.status_code == 200:
+        print(f"Email sent to {', '.join(to_emails)}")
+    else:
+        print(f"Failed to send email: {result.status_code}, {result.json()}")
+
+def send_bulk_emails(recipient_emails, subject, html_content):
+    batch_size = 200 
+    for i in range(0, len(recipient_emails), batch_size):
+        batch_emails = recipient_emails[i:i+batch_size]
+        send_email(batch_emails, subject, html_content)
+        time.sleep(1) 
+
+def generate_email_content(analysis_result, last_name):
+    html_content = f"""
+    <html>
+      <body>
+        <h2>Analysis Report for {last_name}</h2>
+        <p>Dear Subscriber,</p>
+        <p>We have a new analysis report for {last_name}:</p>
+        <div>{analysis_result}</div>
+        <p>Best regards,<br>Your Company</p>
+        <p><a href="unsubscribe_link">Unsubscribe</a></p>
+      </body>
+    </html>
+    """
+    return html_content
+
+def get_recipient_emails():
+    return ['a.manzoni14@gmail.com']
 
 # Function to read PDF and extract text
 def extract_text_from_pdf(pdf_file):
@@ -95,11 +181,22 @@ def send_pdf_text_to_gpt4(pdf_text):
         return None
 
 # Main function to handle PDF file and call GPT-4 API
-def analyze_pdf(pdf_file):
+def analyze_pdf_and_send_email(pdf_file, last_name):
     pdf_text = extract_text_from_pdf(pdf_file)
     if pdf_text:
-        analysis = send_pdf_text_to_gpt4(pdf_text)
-        return analysis
+        analysis_result = send_pdf_text_to_gpt4(pdf_text)
+        if analysis_result:
+            # Prepare the email content
+            subject = f"New Analysis Report for {last_name}"
+            html_content = generate_email_content(analysis_result, last_name)
+            
+            # Get recipient emails
+            recipient_emails = get_recipient_emails()
+            
+            # Send the email in bulk
+            send_bulk_emails(recipient_emails, subject, html_content)
+            
+            return analysis_result
     return "No text extracted from the PDF."
 
 # Loop through each last name
@@ -185,8 +282,8 @@ for last_name in last_names:
                     new_pdfs.append(pdf_name)
                     
                     # Analyze the newly downloaded PDF
-                    analysis_result = analyze_pdf(pdf_path)
-                    print(f"Analysis Result for {pdf_name}:\n", analysis_result)
+                    send_pushover_notification(pushover_user, pushover_token, f"New PDF Analyzed for {last_name}: {pdf_name}")
+                    analysis_result = analyze_pdf_and_send_email(pdf_path, last_name)
 
                 else:
                     print(f"Failed to download {pdf_name}: HTTP {response.status_code}")

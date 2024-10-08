@@ -1,0 +1,9 @@
+selenium
+requests
+python-dotenv
+openai
+pdfplumber
+pdf2image
+pytesseract
+mailjet_rest
+Flask
