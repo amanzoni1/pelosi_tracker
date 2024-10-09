@@ -1,3 +1,5 @@
+# web_app/app.py
+
 import os
 import sys
 
@@ -5,9 +7,11 @@ import sys
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 sys.path.insert(0, PROJECT_ROOT)
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request, make_response, jsonify
 from flask_login import LoginManager, current_user, login_required
 from flask_migrate import Migrate
+import json
+from datetime import datetime
 
 from shared.extensions import db, bcrypt
 from shared.models import User
@@ -17,6 +21,11 @@ app = Flask(__name__)
 app.secret_key = FLASK_SECRET_KEY
 app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+# Secure Cookie Settings
+app.config['SESSION_COOKIE_SECURE'] = True     # Ensure cookies are only sent over HTTPS
+app.config['SESSION_COOKIE_HTTPONLY'] = True   # Prevent JavaScript access to cookies
+app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'  # Control cross-site sending of cookies
 
 db.init_app(app)
 bcrypt.init_app(app)
@@ -44,6 +53,37 @@ def index():
 @login_required
 def account():
     return render_template('account.html', user=current_user)
+
+@app.route('/privacy-policy')
+def privacy_policy():
+    return render_template('privacy_policy.html')
+
+@app.route('/set_cookie_preferences', methods=['POST'])
+def set_cookie_preferences():
+    preferences = request.json.get('preferences', {})
+    response = make_response(jsonify({'message': 'Preferences saved'}))
+    # Save preferences in a cookie (you may want to encrypt this)
+    response.set_cookie(
+        'cookie_preferences',
+        json.dumps(preferences),
+        secure=True,
+        httponly=True,
+        samesite='Lax'
+    )
+    return response
+
+@app.context_processor
+def inject_cookie_preferences():
+    cookie_preferences = request.cookies.get('cookie_preferences')
+    if cookie_preferences:
+        preferences = json.loads(cookie_preferences)
+    else:
+        preferences = {}
+    return dict(cookie_preferences=preferences)
+
+@app.context_processor
+def inject_current_year():
+    return {'current_year': datetime.utcnow().year}
 
 @app.errorhandler(404)
 def page_not_found(e):

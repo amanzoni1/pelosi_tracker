@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Your Service</title>
+    <title>Your Service - {% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
 </head>
 <body>
@@ -42,8 +42,29 @@
 
     {% block content %}{% endblock %}
 
+    {% if not request.cookies.get('cookie_preferences') %}
+    <div id="cookie-consent-banner" style="position: fixed; bottom: 0; width: 100%; background: #333; color: #fff; padding: 15px; text-align: center;">
+        <p>
+            We use cookies to enhance your experience. By continuing to visit this site, you accept our use of cookies.
+            <a href="{{ url_for('privacy_policy') }}" style="color: #fff; text-decoration: underline;">Learn more</a>
+        </p>
+        <button id="accept-cookies" style="margin-right: 10px;">Accept</button>
+        <button id="decline-cookies">Decline</button>
+    </div>
+    {% endif %}
+
+    <footer>
+        <div class="container">
+            <p>&copy; {{ current_year }} Your Service. All rights reserved.</p>
+            <a href="{{ url_for('privacy_policy') }}">Privacy Policy</a> |
+            <a href="#" id="manage-cookies">Manage Cookie Preferences</a>
+        </div>
+    </footer>
+
+    <!-- Include your JavaScript files -->
     <script src="//code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="//stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="{{ url_for('static', filename='js/cookies.js') }}"></script>
 </body>
 </html>
