@@ -1,9 +1,15 @@
-# web_app/auth.py
-from flask import Blueprint, render_template, redirect, url_for, flash, request
+import os
+import sys
+
+# Adjust the path to include the project root
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+sys.path.insert(0, PROJECT_ROOT)
+
+from flask import Blueprint, render_template, redirect, url_for, flash
 from flask_login import login_user, login_required, logout_user
-from .models import User
+from shared.models import User
 from .forms import RegistrationForm, LoginForm
-from .extensions import db, bcrypt
+from shared.extensions import db, bcrypt
 
 auth_bp = Blueprint('auth', __name__, url_prefix='/auth')
 

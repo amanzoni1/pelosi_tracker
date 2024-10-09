@@ -1,13 +1,18 @@
-# web_app/payment.py
+import os
+import sys
+
+# Adjust the path to include the project root
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+sys.path.insert(0, PROJECT_ROOT)
+
 from flask import Blueprint, render_template, redirect, url_for, flash, request, jsonify
 from flask_login import login_required, current_user
-from .models import User
-from .extensions import db
+from shared.models import User
+from shared.extensions import db
 import stripe
-from .utils import STRIPE_PUBLIC_KEY, STRIPE_SECRET_KEY, WELCOME_TEMPLATE_ID
+from shared.utils import STRIPE_PUBLIC_KEY, STRIPE_SECRET_KEY, WELCOME_TEMPLATE_ID
 from datetime import datetime, timedelta
-from .emailer import send_transactional_email
-
+from shared.emailer import send_transactional_email
 
 payment_bp = Blueprint('payment', __name__, url_prefix='/payment')
 stripe.api_key = STRIPE_SECRET_KEY
@@ -31,7 +36,7 @@ def create_checkout_session():
                     'product_data': {
                         'name': 'Subscription',
                     },
-                    'unit_amount': 899, 
+                    'unit_amount': 89900,  # Amount in cents ($899.00)
                 },
                 'quantity': 1,
             }],
@@ -61,7 +66,7 @@ def success():
         # Update user's subscription status
         current_user.subscription_status = 'active'
         current_user.subscription_start = datetime.utcnow()
-        current_user.subscription_end = current_user.subscription_start + timedelta(days=365)  # Example: 30-day subscription
+        current_user.subscription_end = current_user.subscription_start + timedelta(days=365)  # 1-year subscription
         db.session.commit()
         flash('Subscription successful!', 'success')
 

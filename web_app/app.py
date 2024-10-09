@@ -1,13 +1,11 @@
-# client/web_app/app.py
-
 import os
 import sys
 
 # Adjust the path to include the project root
-PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
-sys.path.append(PROJECT_ROOT)
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+sys.path.insert(0, PROJECT_ROOT)
 
-from flask import Flask, render_template, redirect, url_for, flash, request
+from flask import Flask, render_template
 from flask_login import LoginManager, current_user, login_required
 from flask_migrate import Migrate
 
@@ -18,7 +16,7 @@ from shared.utils import FLASK_SECRET_KEY, DATABASE_URL
 app = Flask(__name__)
 app.secret_key = FLASK_SECRET_KEY
 app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
 bcrypt.init_app(app)
@@ -32,8 +30,8 @@ def load_user(user_id):
     return db.session.get(User, int(user_id))
 
 # Import blueprints
-from auth import auth_bp
-from payment import payment_bp
+from .auth import auth_bp
+from .payment import payment_bp
 
 app.register_blueprint(auth_bp)
 app.register_blueprint(payment_bp)

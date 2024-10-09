@@ -1,15 +1,12 @@
-your_project/
-├── client/
-│   ├── web_app/
-│   │   ├── __init__.py
-│   │   ├── app.py
-│   │   ├── auth.py
-│   │   ├── payment.py
-│   │   ├── forms.py
-│   │   ├── templates/
-│   │   ├── static/
-│   │   └── ...                  # Other frontend modules
-│   ├── requirements.txt
+pelosi_tracker/
+├── web_app/        
+│   ├── __init__.py
+│   ├── app.py
+│   ├── auth.py
+│   ├── payment.py
+│   ├── forms.py
+│   ├── templates/
+│   ├── static/
 │   └── ...
 ├── server/
 │   ├── main.py
@@ -30,4 +27,7 @@ your_project/
 │   └── ...
 ├── savedPdf/
 ├── .env
-└── requirements.txt
+├── .flaskenv
+├── .gitignore
+├── requirements.txt
+└── README.md
