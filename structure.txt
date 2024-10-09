@@ -1,0 +1,33 @@
+your_project/
+├── client/
+│   ├── web_app/
+│   │   ├── __init__.py
+│   │   ├── app.py
+│   │   ├── auth.py
+│   │   ├── payment.py
+│   │   ├── forms.py
+│   │   ├── templates/
+│   │   ├── static/
+│   │   └── ...                  # Other frontend modules
+│   ├── requirements.txt
+│   └── ...
+├── server/
+│   ├── main.py
+│   ├── scraper.py
+│   ├── analyzer.py
+│   ├── notifier.py
+│   └── app_context.py
+├── shared/
+│   ├── __init__.py
+│   ├── utils.py
+│   ├── models.py
+│   ├── extensions.py
+│   ├── emailer.py
+│   └── ...
+├── database/
+│   ├── migrations/
+│   ├── alembic.ini
+│   └── ...
+├── savedPdf/
+├── .env
+└── requirements.txt

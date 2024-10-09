@@ -1,11 +1,20 @@
-# analyzer.py
+# server/analyzer.py
+
+import sys
+import os
+
+# Add the project root to the Python path
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+sys.path.insert(0, PROJECT_ROOT)
+
+from openai import OpenAI
 import pdfplumber
 from pdf2image import convert_from_path
 import pytesseract
-import openai
-from utils import OPENAI_API_KEY
 
-openai.api_key = OPENAI_API_KEY
+from shared.utils import OPENAI_API_KEY
+
+client = OpenAI(api_key=OPENAI_API_KEY)
 
 def extract_text_from_pdf(pdf_file):
     # First, try extracting text with pdfplumber
@@ -31,7 +40,7 @@ def extract_text_from_pdf(pdf_file):
 
 def send_pdf_text_to_gpt4(pdf_text):
     try:
-        response = openai.ChatCompletion.create(
+        response = client.chat.completions.create(
             model="gpt-4",
             messages=[
                 {
@@ -45,7 +54,7 @@ def send_pdf_text_to_gpt4(pdf_text):
                     )
                 }
             ],
-            max_tokens=500,
+            max_tokens=300,
             temperature=0.5
         )
         return response.choices[0].message.content.strip()

@@ -1,6 +1,14 @@
-# notifier.py
+# server/notifier.py
+
+import sys
+import os
+
+# Add the project root to the Python path
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+sys.path.insert(0, PROJECT_ROOT)
+
 import requests
-from utils import PUSHOVER_USER_KEY, PUSHOVER_API_TOKEN
+from shared.utils import PUSHOVER_USER_KEY, PUSHOVER_API_TOKEN
 
 def send_pushover_notification(message, priority=0, title="New Politicians Action"):
     url = 'https://api.pushover.net/1/messages.json'

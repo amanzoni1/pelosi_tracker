@@ -1,5 +1,12 @@
-# scraper.py
+# server/scraper.py
+
+import sys
 import os
+
+# Add the project root to the Python path
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+sys.path.insert(0, PROJECT_ROOT)
+
 import time
 import requests
 from urllib.parse import urljoin
@@ -8,11 +15,18 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 
-from utils import CHROME_DRIVER_PATH, BASE_URL, BASE_SAVE_DIR, LAST_NAMES, UPDATE_TEMPLATE_ID
+# Import from shared modules
+from shared.utils import CHROME_DRIVER_PATH, BASE_URL, BASE_SAVE_DIR, LAST_NAMES, UPDATE_TEMPLATE_ID
+from shared.emailer import send_transactional_email
+from shared.models import User
+from shared.extensions import db
+
+# Import local modules
 from notifier import send_pushover_notification
 from analyzer import analyze_pdf
-from emailer import send_transactional_email
-from models import SessionLocal, User 
+
+# Import the app context
+from app_context import app
 
 def initialize_webdriver():
     chrome_options = Options()
@@ -22,16 +36,15 @@ def initialize_webdriver():
     return driver
 
 def send_update_emails(analysis_result, last_name):
-    session = SessionLocal()
-    active_users = session.query(User).filter(User.subscription_status == 'active').all()
-    for user in active_users:
-        variables = {
-            "last_name": last_name,
-            "analysis_result": analysis_result,
-            "user_name": user.email.split('@')[0],
-        }
-        send_transactional_email(user.email, UPDATE_TEMPLATE_ID, variables)
-    session.close()
+    with app.app_context():
+        active_users = User.query.filter_by(subscription_status='active').all()
+        for user in active_users:
+            variables = {
+                "last_name": last_name,
+                "analysis_result": analysis_result,
+                "user_name": user.email.split('@')[0],
+            }
+            send_transactional_email(user.email, UPDATE_TEMPLATE_ID, variables)
 
 def scrape_and_download_pdfs():
     driver = initialize_webdriver()

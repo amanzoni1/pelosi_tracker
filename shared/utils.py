@@ -1,9 +1,13 @@
-# utils.py
+# shared/utils.py
+
 import os
 from dotenv import load_dotenv
 
-# Load environment variables
-load_dotenv()
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+ENV_PATH = os.path.join(PROJECT_ROOT, '.env')
+
+# Load the .env file
+load_dotenv(dotenv_path=ENV_PATH)
 
 # Global constants
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
@@ -33,10 +37,8 @@ CHROME_DRIVER_PATH = os.getenv('CHROME_DRIVER_PATH')
 BASE_URL = 'https://disclosures-clerk.house.gov/FinancialDisclosure'
 
 # Directory to save PDFs
-BASE_SAVE_DIR = os.path.join(os.getcwd(), 'savedPdf')
+BASE_SAVE_DIR = os.path.join(PROJECT_ROOT, 'savedPdf')
+os.makedirs(BASE_SAVE_DIR, exist_ok=True)
 
 # List of last names to search for
 LAST_NAMES = ['Pelosi', 'McCaul', 'Greene', 'Mullin']
-
-# Ensure the base directory exists
-os.makedirs(BASE_SAVE_DIR, exist_ok=True)

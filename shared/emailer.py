@@ -1,7 +1,12 @@
-# emailer.py
+# shared/emailer.py
+
 from mailjet_rest import Client
-from utils import MAILJET_API_KEY, MAILJET_SECRET_KEY, EMAIL_FROM, EMAIL_FROM_NAME
-import os
+from .utils import MAILJET_API_KEY, MAILJET_SECRET_KEY, EMAIL_FROM, EMAIL_FROM_NAME
+import logging
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 mailjet = Client(auth=(MAILJET_API_KEY, MAILJET_SECRET_KEY), version='v3.1')
 
@@ -26,6 +31,6 @@ def send_transactional_email(to_email, template_id, variables):
     }
     result = mailjet.send.create(data=data)
     if result.status_code == 200:
-        print(f"Email sent to {to_email}")
+        logger.info(f"Email sent to {to_email}")
     else:
-        print(f"Failed to send email: {result.status_code}, {result.json()}")
+        logger.error(f"Failed to send email: {result.status_code}, {result.json()}")
