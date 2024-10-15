@@ -1,70 +1,56 @@
-<!-- web_app/templates/base.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Your Service - {% block title %}{% endblock %}</title>
+    <meta name="description" content="Gain insights from political insiders and make informed trading choices.">
+    <meta name="keywords" content="politics, trade, insights, subscription">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl.carousel/1.3.3/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="/static/css/style.css"> <!-- Add your custom styles -->
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="{{ url_for('index') }}">Your Service</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <a class="navbar-brand" href="{{ url_for('index') }}">PoliticianTrade</a>
         <div class="collapse navbar-collapse">
-            <ul class="navbar-nav ml-auto">
-                {% if current_user.is_authenticated %}
+            <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('account') }}">Account</a>
+                    <a class="nav-link" href="#features">Features</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('payment.subscribe') }}">Subscribe</a>
+                    <a class="nav-link" href="#testimonials">Testimonials</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('auth.logout') }}">Logout</a>
+                    <a class="nav-link" href="#pricing">Pricing</a>
                 </li>
-                {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('auth.login') }}">Login</a>
-                    </li>
-                {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link" href="#cta">Contact</a>
+                </li>
             </ul>
+            <div class="navbar-nav">
+                {% if current_user.is_authenticated %}
+                    <a class="nav-link" href="{{ url_for('account') }}">Account</a>
+                {% else %}
+                    <a class="nav-link btn btn-primary" href="{{ url_for('auth.login') }}">Login</a>
+                    <a class="nav-link btn btn-secondary" href="{{ url_for('auth.register') }}">Sign Up</a>
+                {% endif %}
+            </div>
         </div>
     </nav>
 
-    {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-            <div class="container mt-3">
-                {% for category, message in messages %}
-                    <div class="alert alert-{{ category }}">{{ message }}</div>
-                {% endfor %}
-            </div>
-        {% endif %}
-    {% endwith %}
-
     {% block content %}{% endblock %}
 
-    {% if not request.cookies.get('cookie_preferences') %}
-    <div id="cookie-consent-banner" style="position: fixed; bottom: 0; width: 100%; background: #333; color: #fff; padding: 15px; text-align: center;">
-        <p>
-            We use cookies to enhance your experience. By continuing to visit this site, you accept our use of cookies.
-            <a href="{{ url_for('privacy_policy') }}" style="color: #fff; text-decoration: underline;">Learn more</a>
-        </p>
-        <button id="accept-cookies" style="margin-right: 10px;">Accept</button>
-        <button id="decline-cookies">Decline</button>
-    </div>
-    {% endif %}
-
-    <footer>
+    <footer class="footer bg-light text-center">
         <div class="container">
             <p>&copy; {{ current_year }} Your Service. All rights reserved.</p>
-            <a href="{{ url_for('privacy_policy') }}">Privacy Policy</a> |
-            <a href="#" id="manage-cookies">Manage Cookie Preferences</a>
+            <a href="{{ url_for('privacy_policy') }}">Privacy Policy</a>
         </div>
     </footer>
 
-    <!-- Include your JavaScript files -->
     <script src="//code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="//stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="{{ url_for('static', filename='js/cookies.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/owl.carousel/1.3.3/owl.carousel.min.js"></script>
+    <script src="/static/js/cookies.js"></script>
 </body>
 </html>

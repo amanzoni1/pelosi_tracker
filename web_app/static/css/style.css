@@ -1,0 +1,202 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background-color: #ffffff; /* White background for the body */
+}
+
+/* Navigation Styles */
+.navbar {
+    background-color: #ffffff; /* White background for navbar */
+    position: fixed; /* Fix navbar on top */
+    width: 100%; /* Full width */
+    z-index: 1000; /* On top of other elements */
+    height: 60px; /* Set height of navbar */
+}
+
+.navbar .navbar-brand {
+    color: black; /* Black text color */
+}
+
+.navbar .navbar-nav .nav-link {
+    color: black; /* Black text color for links */
+    padding: 15px; /* Add padding for better spacing */
+}
+
+/* Set padding for sections explicitly */
+.features,
+.testimonials,
+.pricing,
+.cta {
+    padding-top: 80px; /* Space for fixed navbar */
+    padding-bottom: 60px; /* Maintain bottom padding for aesthetic */
+}
+
+/* Hero Section */
+.hero {
+    padding: 180px 0; /* Tall hero section */
+    color: #fff; /* White text color */
+    text-align: left; /* Left-align text */
+}
+
+.hero h1 {
+    font-size: 2.5rem; /* Increase the font size */
+}
+
+.hero p {
+    font-size: 1.25rem; /* Slightly larger paragraph font */
+}
+
+
+.features h2 {
+    font-size: 2rem; /* Increase heading size */
+}
+
+/* Testimonials Section */
+.testimonials {
+    background-color: #f8f9fa; /* Light grey background */
+}
+
+.pricing h2 {
+    font-size: 2rem; /* Title size */
+    margin-bottom: 20px; /* Margin below title */
+}
+
+.pricing p {
+    margin-bottom: 10px; /* Margin below description */
+}
+
+/* Pricing Box Styles */
+.box {
+    display: flex;
+    flex-direction: column;
+    height: auto; /* Height will adjust based on content */
+    border-radius: 20px;
+    margin: 15px;
+    background: #ffffff; /* White background */
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    transition: transform 0.3s; /* Transition for hover effect */
+}
+
+.box:hover {
+    transform: scale(1.05); /* Slight scale effect on hover */
+}
+
+.title {
+    width: 100%;
+    padding: 30px 20px;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    background: #f2f2f2; /* Light grey for title background */
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.view {
+    display: block;
+    width: 100%;
+    background: #ffffff; /* White background for view section */
+}
+
+.cost {
+    display: flex;
+    justify-content: center;
+    flex-direction: column; /* Column for cost layout */
+    margin-top: 10px;
+}
+
+.amount {
+    font-size: 2.5em; /* Large font for price */
+    font-weight: bolder;
+}
+
+.detail {
+    margin: auto 0 auto 5px;
+    font-size: 0.8em;
+    font-weight: bold;
+    color: #7D7C7C;
+    margin-bottom: 0; /* Remove bottom margin */
+}
+
+.description {
+    margin: 10px auto;
+    font-size: 0.9em;
+    color: #7D7C7C;
+}
+
+ul {
+    list-style: none; /* No bullets */
+}
+
+li {
+    margin-top: 10px;
+}
+
+/* Remove checkmark from all list items globally */
+li::before {
+    content: ""; /* Remove checkmark */
+}
+
+/* Button Styles */
+.button {
+    margin: 20px auto; /* Center button */
+}
+
+button, .btn {
+    height: 40px; /* Consistent height */
+    padding: 0 20px; /* Horizontal padding for better spacing */
+    font-size: 0.9em; /* Font size */
+    font-weight: bold; /* Bold text */
+    color: #ffffff; /* White text color */
+    background-color: #007bff; /* Bootstrap primary color (blue) */
+    border: none; /* No border */
+    border-radius: 50px; /* More rounded corners */
+    cursor: pointer; /* Pointer on hover */
+    transition: background-color 0.3s; /* Smooth transition for background color */
+    display: inline-flex; /* Use inline-flex to keep button size normal */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    min-width: 150px; /* Minimum width for buttons */
+}
+
+/* Hover effect */
+button:hover, .btn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Adjust component alignment */
+.content {
+    display: flex;
+    justify-content: flex-end; /* Align to the right */
+    padding: 0 20px; /* Padding for spacing */
+}
+
+/* Call to Action Section */
+#cta {
+    background-color: #f8f9fa; /* Light grey for CTA section */
+}
+
+#cta h2 {
+    margin-bottom: 20px; /* Margin below heading */
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 970px) {
+    .content {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin: 50px auto; /* Centered margin for mobile */
+    }
+    .box {
+        margin: 20px 0; /* Margin for boxes on mobile */
+    }
+}
+
