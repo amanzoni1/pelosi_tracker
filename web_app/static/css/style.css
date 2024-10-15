@@ -7,39 +7,98 @@
     font-family: "Poppins", sans-serif;
 }
 
-body {
-    background-color: #ffffff; /* White background for the body */
-}
+/* body {
+    background-color: #ffffff; 
+} */
 
 /* Navigation Styles */
 .navbar {
     display: flex;
-    justify-content: space-between; /* Ensure brand and items are spaced out */
-    align-items: center; /* Vertically align brand and items */
-    background-color: #f8f9fa;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #e0e0e0;
     position: fixed;
     width: 100%;
     height: 60px;
     z-index: 1000;
-    padding: 0 20px; /* Add padding to keep content spaced nicely */
+    padding: 0 20px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow below the navbar */
 }
 
 .navbar .navbar-brand {
-    font-size: 1.5rem; /* Keep PoliticianTrade font size consistent */
-    color: black;
+    font-size: 1.5rem;
+    color: #000000;
 }
 
 .navbar .navbar-nav {
     display: flex;
-    align-items: center; /* Ensure nav items align with the brand */
+    align-items: center;
 }
 
 .nav-link {
-    color: black !important;
+    color: #000000;
     padding: 15px;
-    font-weight: bold; /* Ensure links are bold to match branding */
-    text-align: center; /* Center links */
+    font-weight: bold;
+    text-align: center;
 }
+
+/* Fix: Set the height to ensure items align consistently */
+.navbar-nav .nav-item {
+    display: flex;
+    align-items: center;
+    height: 60px; /* Ensure the nav items align with the navbar height */
+}
+
+/* Navbar Button Styles */
+.navbar-nav .nav-link.btn {
+    border-radius: 8px; /* Rounded corners */
+    font-size: 0.8rem; /* Smaller font size */
+    color: white !important; /* White text inside */
+    background: linear-gradient(90deg, #b51f1f 0%, #260000 100%); /* Red gradient background */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    display: inline-flex; /* Flex to center the content */
+    align-items: center; /* Vertical centering */
+    justify-content: center; /* Horizontal centering */
+    padding: 6px 12px; /* Padding for the buttons */
+    min-width: 80px; /* Ensure both buttons have the same width */
+    margin-left: 10px; /* Space between the buttons */
+    height: 40px; /* Consistent height */
+}
+
+/* Hover effect for navbar buttons */
+.navbar-nav .nav-link.btn:hover {
+    background: linear-gradient(90deg, #8b1a1a 0%, #3c0000 100%); /* Darker red gradient on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow on hover */
+}
+
+/* Navbar Toggler (Burger Menu) Button Styles */
+.navbar-toggler.collapsed {
+    width: 40px; /* Adjust the width */
+    height: 40px; /* Adjust the height */
+    border: 2px solid transparent; /* No border initially */
+    border-image: linear-gradient(90deg, #b51f1f 0%, #260000 100%);
+    border-image-slice: 1;
+    border-radius: 8px; /* Slightly rounded corners */
+    background-color: white; /* White background when collapsed */
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Navbar Toggler Icon (Lines inside the burger button) */
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(181, 31, 31, 1)' stroke-width='3' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/ %3E%3C/svg%3E");
+}
+
+/* Hover and Active state for the collapsed burger button */
+.navbar-toggler.collapsed:hover {
+    background-color: #f8f8f8; /* Slightly darker background on hover */
+    border-color: #b51f1f; /* Red gradient border on hover */
+}
+
+.navbar-toggler.collapsed:active, .navbar-toggler.collapsed:focus {
+    background: linear-gradient(90deg, #b51f1f 0%, #260000 100%);
+    outline: none; /* Remove focus outline */
+}
+
 
 /* Set padding for sections explicitly */
 .features,
@@ -50,19 +109,64 @@ body {
     padding-bottom: 60px !important; /* Bottom padding */
 }
 
+
 /* Hero Section */
 .hero {
     padding: 180px 0; /* Tall hero section */
-    color: #fff; /* White text color */
     text-align: left; /* Left-align text */
+    color: #fff;
+    display: flex;
+    justify-content: flex-start;
 }
 
-.hero h1 {
-    font-size: 2.5rem; /* Increase the font size */
+.hero .container {
+    width: 60%; /* Set container width to half of the page */
+    margin-left: 70px;
+    position: relative; /* Keep relative positioning for z-index */
+    z-index: 1;
 }
 
+/* Hero Section Title */
+.hero .display-4 {
+    font-size: 4rem; /* Large title */
+    font-weight: 900; /* Very bold for strong emphasis */
+}
+
+/* Gradient text effect for title */
+.gradient-text {
+    background: linear-gradient(90deg, #b51f1f 0%, #000000 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+
+/* Hero Subtitle */
 .hero p {
-    font-size: 1.25rem; /* Slightly larger paragraph font */
+    font-size: 1.25rem; /* Slightly larger font size */
+    font-weight: 500; /* Bold font for subtitle */
+    color: #2c2c2c; /* Darker grey for readability */
+}
+
+/* Custom button style */
+.custom-btn {
+    background-color: #007bff; /* Default Bootstrap primary color */
+    color: white;
+    font-size: 1.25rem; /* Slightly larger button text */
+    padding: 12px 30px; /* More padding for a larger button */
+    border-radius: 50px; /* More rounded corners */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover */
+}
+
+.custom-btn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2); /* Add a shadow effect on hover */
+}
+
+
+/* Features Section */
+.features {
+    background-color: #f8f9fa; /* Light grey background */
 }
 
 .feature-box {
@@ -87,12 +191,15 @@ body {
     color: #666; /* Lighter text color */
 }
 
-.features h2 {
-    font-size: 2rem; /* Increase heading size */
-}
 
 /* Testimonials Section */
 .testimonials {
+    background-color: #ffffff; /* Light grey background */
+}
+
+
+/* Pricing Section */
+.pricing {
     background-color: #f8f9fa; /* Light grey background */
 }
 
@@ -180,21 +287,22 @@ li {
 }
 
 /* Button Styles */
-.button {
-    margin: 20px auto;
-    padding: 10px 0; /* Add padding to the button itself */
-}
-
 .button a {
     padding: 10px 30px;
     display: inline-block;
-    background-color: #00ff6a; /* Green button color */
+    background-color: #00ff6a;
     border-radius: 8px;
     color: black;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-button, .btn {
+.button {
+    margin: 20px auto;
+    padding: 10px 0;
+}
+
+/* General button styles (use only when necessary) */
+.custom-btn {
     height: 40px;
     padding: 0 20px;
     font-size: 0.9em;
@@ -211,10 +319,9 @@ button, .btn {
     min-width: 150px;
 }
 
-/* Hover effect */
-button:hover, .btn:hover {
-    background-color: #00ff6a; /* Keep the same color */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow on hover */
+.custom-btn:hover {
+    background-color: #00e658;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 
@@ -279,12 +386,12 @@ button:hover, .btn:hover {
 @media (max-width: 991.98px) {
     .navbar-collapse {
         position: fixed;
-        top: 60px; /* Ensure it starts below the navbar */
+        top: 60px;
         width: 100%;
         height: 100%;
         overflow-y: auto;
-        background-color: #ffffff;
-        z-index: 999; /* Ensure it's on top */
+        background-color: #e0e0e0;
+        z-index: 999;
     }
 
     .navbar-nav {
@@ -293,15 +400,15 @@ button:hover, .btn:hover {
     }
 
     .navbar-collapse.show {
-        background-color: #ffffff; /* Ensure the background stays solid when expanded */
-        transition: all 0.3s ease; /* Smooth transition */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow when expanded */
+        background-color: #e0e0e0;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
     .nav-link {
         padding: 15px;
-        width: 100%; /* Ensure full width clickable links */
-        border-bottom: 1px solid #ddd; /* Add a border for clear separation */
+        width: 100%;
+        border-bottom: 1px solid #000000;
     }
 }
 
@@ -319,6 +426,6 @@ button:hover, .btn:hover {
     }
 
     .navbar-toggler {
-        display: none; /* Hide the toggle button in large screens */
+        display: none;
     }
 }
