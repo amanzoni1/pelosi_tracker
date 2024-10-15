@@ -13,29 +13,41 @@ body {
 
 /* Navigation Styles */
 .navbar {
-    background-color: #ffffff; /* White background for navbar */
-    position: fixed; /* Fix navbar on top */
-    width: 100%; /* Full width */
-    z-index: 1000; /* On top of other elements */
-    height: 60px; /* Set height of navbar */
+    display: flex;
+    justify-content: space-between; /* Ensure brand and items are spaced out */
+    align-items: center; /* Vertically align brand and items */
+    background-color: #f8f9fa;
+    position: fixed;
+    width: 100%;
+    height: 60px;
+    z-index: 1000;
+    padding: 0 20px; /* Add padding to keep content spaced nicely */
 }
 
 .navbar .navbar-brand {
-    color: black; /* Black text color */
+    font-size: 1.5rem; /* Keep PoliticianTrade font size consistent */
+    color: black;
 }
 
-.navbar .navbar-nav .nav-link {
-    color: black; /* Black text color for links */
-    padding: 15px; /* Add padding for better spacing */
+.navbar .navbar-nav {
+    display: flex;
+    align-items: center; /* Ensure nav items align with the brand */
+}
+
+.nav-link {
+    color: black !important;
+    padding: 15px;
+    font-weight: bold; /* Ensure links are bold to match branding */
+    text-align: center; /* Center links */
 }
 
 /* Set padding for sections explicitly */
 .features,
 .testimonials,
 .pricing,
-.cta {
-    padding-top: 80px; /* Space for fixed navbar */
-    padding-bottom: 60px; /* Maintain bottom padding for aesthetic */
+.faq {
+    padding-top: 90px !important; /* Space for fixed navbar */
+    padding-bottom: 60px !important; /* Bottom padding */
 }
 
 /* Hero Section */
@@ -53,6 +65,27 @@ body {
     font-size: 1.25rem; /* Slightly larger paragraph font */
 }
 
+.feature-box {
+    background-color: #f2f2f2; /* Light grey background for feature blocks */
+    border-radius: 15px; /* Rounded corners */
+    padding: 20px;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); /* Shadow effect */
+    transition: transform 0.3s ease; /* Smooth scaling transition */
+}
+
+.feature-box:hover {
+    transform: scale(1.05); /* Slightly scale on hover */
+}
+
+.feature-box h4 {
+    font-weight: bold;
+    color: #333; /* Darker text color */
+}
+
+.feature-box p {
+    font-size: 0.95em;
+    color: #666; /* Lighter text color */
+}
 
 .features h2 {
     font-size: 2rem; /* Increase heading size */
@@ -76,16 +109,22 @@ body {
 .box {
     display: flex;
     flex-direction: column;
-    height: auto; /* Height will adjust based on content */
+    justify-content: space-between; /* Ensures the button is always aligned at the bottom, with space */
+    height: 500px;
+    padding-bottom: 20px; /* Ensures padding at the bottom */
     border-radius: 20px;
     margin: 15px;
-    background: #ffffff; /* White background */
-    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); /* Shadow for depth */
-    transition: transform 0.3s; /* Transition for hover effect */
+    background: #ffffff;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
 }
 
 .box:hover {
-    transform: scale(1.05); /* Slight scale effect on hover */
+    transform: scale(1.05);
+}
+
+.container h2, .container p {
+    margin-bottom: 20px; /* Improve spacing */
 }
 
 .title {
@@ -94,7 +133,7 @@ body {
     font-size: 1.5em;
     font-weight: bold;
     text-align: center;
-    background: #f2f2f2; /* Light grey for title background */
+    background: #f2f2f2;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
 }
@@ -102,74 +141,82 @@ body {
 .view {
     display: block;
     width: 100%;
-    background: #ffffff; /* White background for view section */
+    background: #ffffff;
 }
 
 .cost {
     display: flex;
     justify-content: center;
-    flex-direction: column; /* Column for cost layout */
+    flex-direction: column;
     margin-top: 10px;
 }
 
 .amount {
-    font-size: 2.5em; /* Large font for price */
+    font-size: 2.5em;
     font-weight: bolder;
 }
 
 .detail {
-    margin: auto 0 auto 5px;
     font-size: 0.8em;
     font-weight: bold;
     color: #7D7C7C;
-    margin-bottom: 0; /* Remove bottom margin */
+    margin-bottom: 0;
 }
 
 .description {
     margin: 10px auto;
     font-size: 0.9em;
     color: #7D7C7C;
+    flex-grow: 1; /* Allow the description to expand evenly in the box */
 }
 
 ul {
-    list-style: none; /* No bullets */
+    list-style: none;
+    padding-left: 0;
 }
 
 li {
     margin-top: 10px;
 }
 
-/* Remove checkmark from all list items globally */
-li::before {
-    content: ""; /* Remove checkmark */
-}
-
 /* Button Styles */
 .button {
-    margin: 20px auto; /* Center button */
+    margin: 20px auto;
+    padding: 10px 0; /* Add padding to the button itself */
+}
+
+.button a {
+    padding: 10px 30px;
+    display: inline-block;
+    background-color: #00ff6a; /* Green button color */
+    border-radius: 8px;
+    color: black;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
 }
 
 button, .btn {
-    height: 40px; /* Consistent height */
-    padding: 0 20px; /* Horizontal padding for better spacing */
-    font-size: 0.9em; /* Font size */
-    font-weight: bold; /* Bold text */
-    color: #ffffff; /* White text color */
-    background-color: #007bff; /* Bootstrap primary color (blue) */
-    border: none; /* No border */
-    border-radius: 50px; /* More rounded corners */
-    cursor: pointer; /* Pointer on hover */
-    transition: background-color 0.3s; /* Smooth transition for background color */
-    display: inline-flex; /* Use inline-flex to keep button size normal */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    min-width: 150px; /* Minimum width for buttons */
+    height: 40px;
+    padding: 0 20px;
+    font-size: 0.9em;
+    font-weight: bold;
+    color: #000000;
+    background-color: #00ff6a;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 150px;
 }
 
 /* Hover effect */
 button:hover, .btn:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: #00ff6a; /* Keep the same color */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow on hover */
 }
+
 
 /* Adjust component alignment */
 .content {
@@ -178,13 +225,41 @@ button:hover, .btn:hover {
     padding: 0 20px; /* Padding for spacing */
 }
 
-/* Call to Action Section */
-#cta {
-    background-color: #f8f9fa; /* Light grey for CTA section */
+/* FAQ Buttons - No button styling, just bold text */
+.faq-question {
+    background: none;
+    border: none;
+    color: #333; /* Darker text color */
+    font-weight: bold;
+    text-align: left;
+    width: 100%;
+    padding: 0;
+    font-size: 1.1em;
+    cursor: pointer;
 }
 
-#cta h2 {
-    margin-bottom: 20px; /* Margin below heading */
+.faq-question:hover {
+    color: #007bff;
+    text-decoration: underline;
+}
+
+.faq-question:focus {
+    outline: none; /* Remove outline on focus */
+}
+
+.accordion .card-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #ddd;
+}
+
+.accordion .card-body {
+    text-align: left;
+}
+
+.accordion .faq-question:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    color: #0056b3; /* Darker blue on hover */
 }
 
 /* Responsive Styles */
@@ -193,10 +268,57 @@ button:hover, .btn:hover {
         display: flex;
         align-items: center;
         flex-direction: column;
-        margin: 50px auto; /* Centered margin for mobile */
+        margin: 50px auto;
     }
     .box {
-        margin: 20px 0; /* Margin for boxes on mobile */
+        margin: 20px 0;
+        height: auto; /* Allow height to adjust for smaller screens */
     }
 }
 
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        position: fixed;
+        top: 60px; /* Ensure it starts below the navbar */
+        width: 100%;
+        height: 100%;
+        overflow-y: auto;
+        background-color: #ffffff;
+        z-index: 999; /* Ensure it's on top */
+    }
+
+    .navbar-nav {
+        display: block;
+        text-align: left;
+    }
+
+    .navbar-collapse.show {
+        background-color: #ffffff; /* Ensure the background stays solid when expanded */
+        transition: all 0.3s ease; /* Smooth transition */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow when expanded */
+    }
+
+    .nav-link {
+        padding: 15px;
+        width: 100%; /* Ensure full width clickable links */
+        border-bottom: 1px solid #ddd; /* Add a border for clear separation */
+    }
+}
+
+/* Desktop View */
+@media (min-width: 992px) {
+    .navbar-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .navbar-collapse {
+        display: flex !important;
+        justify-content: space-between;
+    }
+
+    .navbar-toggler {
+        display: none; /* Hide the toggle button in large screens */
+    }
+}
