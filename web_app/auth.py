@@ -8,7 +8,7 @@ sys.path.insert(0, PROJECT_ROOT)
 from flask import Blueprint, render_template, redirect, url_for, flash
 from flask_login import login_user, login_required, logout_user
 from shared.models import User
-from .forms import RegistrationForm, LoginForm
+from .forms import RegistrationForm, LoginForm, ForgotPasswordForm
 from shared.extensions import db, bcrypt
 
 auth_bp = Blueprint('auth', __name__, url_prefix='/auth')
@@ -48,3 +48,14 @@ def logout():
     logout_user()
     flash('Logged out successfully!', 'info')
     return redirect(url_for('index'))
+
+@auth_bp.route('/forgot-password', methods=['GET', 'POST'])
+def forgot_password():
+    form = ForgotPasswordForm()  # You'll need to create this form
+    if form.validate_on_submit():
+        # Logic for handling password reset
+        # You can generate a reset link and send an email to the user
+        flash('Password reset instructions have been sent to your email.', 'info')
+        return redirect(url_for('auth.login'))
+    
+    return render_template('forgot_password.html', form=form)

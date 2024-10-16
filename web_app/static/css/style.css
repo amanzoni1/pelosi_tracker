@@ -62,7 +62,7 @@
     font-size: 0.8rem; /* Smaller font size */
     color: white !important; /* White text inside */
     border: none;
-    background: linear-gradient(90deg, #b51f1f 0%, #260000 100%); /* Red gradient background */
+    background: linear-gradient(90deg, #b62727 0%, #630101 100%); /* Red gradient background */
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
     display: inline-flex; /* Flex to center the content */
     align-items: center; /* Vertical centering */
@@ -75,7 +75,7 @@
 
 /* Hover effect for navbar buttons */
 .navbar-nav .nav-link.btn:hover {
-    background: linear-gradient(90deg, #8b1a1a 0%, #3c0000 100%); /* Darker red gradient on hover */
+    background: linear-gradient(90deg, #ce2a2a 0%, #800101 100%);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow on hover */
 }
 
@@ -205,9 +205,9 @@
 }
 
 /* Custom button style */
-.hero .custom-btn {
-    background-color: #00cc58; /* Green background */
-    color: white(208, 213, 210); 
+.hero-btn {
+    background-color: #00cc58 !important; /* Green background */
+    color: white !important; 
     width: 270px;
     font-size: 1.25rem; /* Make the button text size match the paragraph */
     padding: 14px 26px; /* Bigger padding for a larger button */
@@ -218,10 +218,11 @@
 }
 
 
-.hero .custom-btn:hover,
-.hero .custom-btn:focus,
-.hero .custom-btn:active {
+.hero-btn:hover,
+.hero-btn:focus,
+.hero-btn:active {
     background-color: #00ff6a !important; /* Maintain the original background color */
+    color: white;
     border: none; /* Ensure no border appears */
     box-shadow: none; /* Remove any default shadow effects */
     outline: none; /* Remove default outline */
@@ -379,7 +380,7 @@ ul {
     padding-left: 0;
 }
 
-li {
+.price-li {
     margin-top: 10px;
 }
 

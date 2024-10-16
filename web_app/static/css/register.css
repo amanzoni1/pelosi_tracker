@@ -1,0 +1,125 @@
+/* Center the form on the screen */
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #e3f2fd, #eceff1); /* Light background */
+}
+
+/* Style the registration box */
+.register-box {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+/* Title and subtitle */
+.register-title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 2px;
+}
+
+.register-subtitle {
+    font-size: 0.85rem; /* Slightly smaller subtitle */
+    margin-bottom: 22px; 
+}
+
+.register-subtitle a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.register-subtitle a:hover {
+    text-decoration: underline;
+}
+
+/* Input fields */
+.form-group {
+    margin-bottom: 12px; /* Reduced margin for more compact fields */
+    text-align: left; /* Align the labels and input fields to the left */
+}
+
+.form-group label {
+    font-weight: 600;
+    color: #333;
+    font-size: 0.9rem; /* Slightly smaller label font */
+    margin-bottom: 2px;
+}
+
+.form-control {
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    padding: 6px;
+    font-size: 0.95rem;
+    margin-bottom: 2px;
+}
+
+/* Button styling */
+.register-btn {
+    background: linear-gradient(90deg, #b62727 0%, #630101 100%);
+    color: white;
+    border: none;
+    font-size: 1rem;
+    padding: 14px;
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 18px;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect */
+.register-btn:hover {
+    background: linear-gradient(90deg, #ce2a2a 0%, #800101 100%);
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Style for password requirements */
+.password-requirements {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 2px;
+    font-size: 0.6rem;
+    color: #333;
+}
+
+/* Individual requirement item */
+.password-requirements li {
+    margin-bottom: 2px;
+    display: flex;
+    align-items: center;
+}
+
+/* Icons for validation */
+.password-requirements .icon {
+    margin-right: 4px;
+    font-size: 0.6rem; /* Larger icon size */
+}
+
+/* Invalid criteria - Red by default */
+.password-requirements li.invalid .icon {
+    color: #939393;
+}
+
+/* Valid criteria - Turns green when condition is met */
+.password-requirements li.valid .icon {
+    color: #28a745;
+}
+
+/* Valid criteria text turns green */
+.password-requirements li.valid {
+    color: #939393;
+}
+
+/* Invalid criteria text stays red */
+.password-requirements li.invalid {
+    color: #939393;
+}

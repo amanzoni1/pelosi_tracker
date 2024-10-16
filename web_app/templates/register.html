@@ -1,32 +1,106 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Sign Up{% endblock %}
+{% block meta_description %}Sign up for PoliticianTrade to get insights from political moves and optimize your trading strategy.{% endblock %}
+{% block meta_keywords %}politician trade, stock trading, political insights, insider trading{% endblock %}
 
 {% block content %}
-    <h2>Register</h2>
-    <form method="POST">
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.email.label }}<br>
-            {{ form.email(size=32) }}<br>
-            {% for error in form.email.errors %}
-                <span class="error">{{ error }}</span>
-            {% endfor %}
-        </p>
-        <p>
-            {{ form.password.label }}<br>
-            {{ form.password(size=32) }}<br>
-            {% for error in form.password.errors %}
-                <span class="error">{{ error }}</span>
-            {% endfor %}
-        </p>
-        <p>
-            {{ form.confirm_password.label }}<br>
-            {{ form.confirm_password(size=32) }}<br>
-            {% for error in form.confirm_password.errors %}
-                <span class="error">{{ error }}</span>
-            {% endfor %}
-        </p>
-        <p>{{ form.submit() }}</p>
-    </form>
+<div class="register-container">
+    <div class="register-box">
+        <h2 class="register-title">Create an Account</h2>
+        <p class="register-subtitle">Already have an account? <a href="{{ url_for('auth.login') }}">Log in</a></p>
+
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.email.label }} 
+                {{ form.email(class="form-control", placeholder="Email") }}
+            </div>
+            
+            <div class="form-group">
+                {{ form.password.label }}
+                {{ form.password(class="form-control", id="password", placeholder="Password") }}
+                
+                <!-- Password Requirement Checklist -->
+                <ul class="password-requirements">
+                    <li id="length" class="invalid">
+                        <span class="icon">✘</span> Must be at least 8 characters
+                    </li>
+                    <li id="combination" class="invalid">
+                        <span class="icon">✘</span> Must contain uppercase, lowercase, and a number
+                    </li>
+                    <li id="special" class="invalid">
+                        <span class="icon">✘</span> Must contain a special character
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="form-group">
+                {{ form.confirm_password.label }}
+                {{ form.confirm_password(class="form-control", id="confirm_password", placeholder="Confirm Password") }}
+            </div>
+            
+            <button type="submit" class="btn register-btn" disabled>Sign Up</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    // JavaScript for real-time password validation
+    const password = document.getElementById('password');
+    const confirmPassword = document.getElementById('confirm_password');
+    const submitButton = document.querySelector('button[type="submit"]');
+    
+    // Password validation criteria elements
+    const lengthCheck = document.getElementById('length');
+    const combinationCheck = document.getElementById('combination');
+    const specialCheck = document.getElementById('special');
+    
+    function validatePassword() {
+        const passwordValue = password.value;
+
+        // Check length
+        if (passwordValue.length >= 8) {
+            lengthCheck.classList.remove('invalid');
+            lengthCheck.classList.add('valid');
+            lengthCheck.querySelector('.icon').textContent = '✓';
+        } else {
+            lengthCheck.classList.remove('valid');
+            lengthCheck.classList.add('invalid');
+            lengthCheck.querySelector('.icon').textContent = '✘';
+        }
+
+        // Check for uppercase, lowercase, and number combination
+        if (/[A-Z]/.test(passwordValue) && /[a-z]/.test(passwordValue) && /\d/.test(passwordValue)) {
+            combinationCheck.classList.remove('invalid');
+            combinationCheck.classList.add('valid');
+            combinationCheck.querySelector('.icon').textContent = '✓';
+        } else {
+            combinationCheck.classList.remove('valid');
+            combinationCheck.classList.add('invalid');
+            combinationCheck.querySelector('.icon').textContent = '✘';
+        }
+
+        // Check special character
+        if (/[\W_]/.test(passwordValue)) {
+            specialCheck.classList.remove('invalid');
+            specialCheck.classList.add('valid');
+            specialCheck.querySelector('.icon').textContent = '✓';
+        } else {
+            specialCheck.classList.remove('valid');
+            specialCheck.classList.add('invalid');
+            specialCheck.querySelector('.icon').textContent = '✘';
+        }
+
+        // Enable the submit button if all conditions are met and passwords match
+        if (document.querySelectorAll('.password-requirements .valid').length === 3 && password.value === confirmPassword.value) {
+            submitButton.disabled = false;
+        } else {
+            submitButton.disabled = true;
+        }
+    }
+
+    password.addEventListener('input', validatePassword);
+    confirmPassword.addEventListener('input', validatePassword);
+</script>
 {% endblock %}
