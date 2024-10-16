@@ -54,6 +54,7 @@
     border-radius: 8px; /* Rounded corners */
     font-size: 0.8rem; /* Smaller font size */
     color: white !important; /* White text inside */
+    border: none;
     background: linear-gradient(90deg, #b51f1f 0%, #260000 100%); /* Red gradient background */
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
     display: inline-flex; /* Flex to center the content */
@@ -150,17 +151,22 @@
 
 /* Custom button style */
 .custom-btn {
-    background-color: #007bff; /* Default Bootstrap primary color */
-    color: white;
-    font-size: 1.25rem; /* Slightly larger button text */
-    padding: 12px 30px; /* More padding for a larger button */
-    border-radius: 50px; /* More rounded corners */
-    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover */
+    background-color: #00cc58; /* Green background */
+    color: white(208, 213, 210); 
+    font-size: 1.25rem; /* Make the button text size match the paragraph */
+    padding: 12px 26px; /* Bigger padding for a larger button */
+    border-radius: 8px; /* Rounded corners */
+    border: none;
+    font-weight: 500; /* Slightly bolder text */
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover */
 }
 
+/* Hover effect for the button */
 .custom-btn:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2); /* Add a shadow effect on hover */
+    background-color: #00ff6a; /* Slightly darker green on hover */
+    border: none;
+    transform: scale(1.05); /* Slight scaling on hover */
+    box-shadow: 0px 6px 14px rgba(0, 0, 0, 0.2); /* Add a shadow effect on hover */
 }
 
 
@@ -169,28 +175,48 @@
     background-color: #f8f9fa; /* Light grey background */
 }
 
+.features h2 {
+    font-size: 2.5rem; /* Larger title size */
+    font-weight: 700; /* Bolder title */
+    margin-bottom: 60px !important;
+    color: #333; /* Darker color for visibility */
+}
+
+.features .row {
+    display: flex; /* Use flexbox to align items */
+    flex-wrap: wrap; /* Allow boxes to wrap when screen size changes */
+}
+
 .feature-box {
-    background-color: #f2f2f2; /* Light grey background for feature blocks */
-    border-radius: 15px; /* Rounded corners */
+    background-color: #ffffff !important; /* Make boxes white */
+    border-radius: 15px; /* Keep rounded corners */
     padding: 20px;
-    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); /* Shadow effect */
-    transition: transform 0.3s ease; /* Smooth scaling transition */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Adjusted shadow for more visibility */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover transition */
+    min-height: 350px;
+    flex-grow: 1; /* Allow boxes to grow equally */
+    display: flex;
+    flex-direction: column; /* Ensures the box content flows vertically */
+    justify-content: space-between; /* Space content evenly */
 }
 
 .feature-box:hover {
-    transform: scale(1.05); /* Slightly scale on hover */
+    transform: scale(1.05); /* Slight scale on hover */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
 }
 
 .feature-box h4 {
     font-weight: bold;
-    color: #333; /* Darker text color */
+    color: #333; /* Keep text dark */
+    text-align: center;
 }
 
 .feature-box p {
-    font-size: 0.95em;
-    color: #666; /* Lighter text color */
+    font-size: 1rem; /* Slightly larger font */
+    color: #666; /* Lighter grey for readability */
+    text-align: center; /* Ensure center-aligned text */
+    margin-bottom: 20px;
 }
-
 
 /* Testimonials Section */
 .testimonials {
@@ -203,13 +229,18 @@
     background-color: #f8f9fa; /* Light grey background */
 }
 
-.pricing h2 {
-    font-size: 2rem; /* Title size */
-    margin-bottom: 20px; /* Margin below title */
+.price-title {
+    font-size: 2.5rem; /* Larger title size */
+    font-weight: 700; /* Bolder title */
+    color: #333; 
+    margin-bottom: 20px;
 }
 
 .pricing p {
-    margin-bottom: 10px; /* Margin below description */
+    font-size: 1.05rem; /* Normal text size for the description */
+    font-weight: 400;
+    color: #666;
+    margin-bottom: 4px !important;
 }
 
 /* Pricing Box Styles */
@@ -222,8 +253,9 @@
     border-radius: 20px;
     margin: 15px;
     background: #ffffff;
-    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s;
+    margin-top: 60px;
 }
 
 .box:hover {
@@ -286,42 +318,27 @@ li {
     margin-top: 10px;
 }
 
-/* Button Styles */
-.button a {
-    padding: 10px 30px;
-    display: inline-block;
-    background-color: #00ff6a;
-    border-radius: 8px;
-    color: black;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.button {
-    margin: 20px auto;
-    padding: 10px 0;
-}
-
-/* General button styles (use only when necessary) */
-.custom-btn {
-    height: 40px;
-    padding: 0 20px;
-    font-size: 0.9em;
-    font-weight: bold;
-    color: #000000;
-    background-color: #00ff6a;
+/* Pricing Section Button Styles */
+.pricing-btn {
+    background-color: #00cc58; /* Green background */
+    color: white; /* White text */
+    width: 100%;
+    height: 78px;
+    font-size: 1.5rem; /* Larger text size */
+    display: flex; /* Flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
     border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    min-width: 150px;
+    border-radius: 0;
+    font-weight: 500;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Remove transform effect */
 }
 
-.custom-btn:hover {
-    background-color: #00e658;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* Hover effect for pricing button */
+.pricing-btn:hover {
+    background-color: #00ff6a; /* Lighter green on hover */
+    color: white;
+    box-shadow: 0px 6px 14px rgba(0, 0, 0, 0.2); /* Shadow effect on hover */
 }
 
 
