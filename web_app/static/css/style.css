@@ -25,9 +25,16 @@
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow below the navbar */
 }
 
-.navbar .navbar-brand {
-    font-size: 1.5rem;
+.navbar-brand {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2rem; /* Adjust the font size as needed */
     color: #000000;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    display: flex;
+    margin-top: 12px;
+    height: 100%; /* Ensure it takes the full height of the navbar */
+    padding-left: 10px; /* Adjust left padding to ensure good alignment */
 }
 
 .navbar .navbar-nav {
@@ -73,32 +80,80 @@
 }
 
 /* Navbar Toggler (Burger Menu) Button Styles */
-.navbar-toggler.collapsed {
-    width: 40px; /* Adjust the width */
-    height: 40px; /* Adjust the height */
-    border: 2px solid transparent; /* No border initially */
-    border-image: linear-gradient(90deg, #b51f1f 0%, #260000 100%);
-    border-image-slice: 1;
-    border-radius: 8px; /* Slightly rounded corners */
-    background-color: white; /* White background when collapsed */
-    transition: background-color 0.3s ease, border-color 0.3s ease;
+.navbar-toggler {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #b51f1f !important;
+    border-radius: 8px;
+    /* border-image-slice: 1; */
+    background-color: white;
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0; /* Ensure there is no padding for better alignment */
 }
 
-/* Navbar Toggler Icon (Lines inside the burger button) */
+.navbar-toggler:focus {
+    outline: none;
+    box-shadow: none; /* Removes the blue glow/shadow */
+    border-color: #b51f1f; /* Keep the same red border */
+}
+
+/* Navbar Toggler Icon (Burger Lines) */
 .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(181, 31, 31, 1)' stroke-width='3' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/ %3E%3C/svg%3E");
+    width: 24px;
+    height: 2px;
+    background-color: #b51f1f;
+    display: inline-block;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after {
+    content: '';
+    width: 24px;
+    height: 2px;
+    background-color: #b51f1f; /* Same color for consistency */
+    position: absolute;
+    left: 0; /* Align to the left */
+    transition: all 0.3s ease;
+}
+
+.navbar-toggler-icon::before {
+    top: -8px; /* Proper spacing for the top line */
+}
+
+.navbar-toggler-icon::after {
+    top: 8px; /* Proper spacing for the bottom line */
+}
+
+/* When the menu is open (X icon) */
+.navbar-toggler.open .navbar-toggler-icon {
+    background-color: transparent;
+}
+
+.navbar-toggler.open .navbar-toggler-icon::before {
+    transform: rotate(45deg);
+    top: 0;
+}
+
+.navbar-toggler.open .navbar-toggler-icon::after {
+    transform: rotate(-45deg);
+    top: 0;
 }
 
 /* Hover and Active state for the collapsed burger button */
 .navbar-toggler.collapsed:hover {
     background-color: #f8f8f8; /* Slightly darker background on hover */
-    border-color: #b51f1f; /* Red gradient border on hover */
+    border-color: #b51f1f;
 }
 
-.navbar-toggler.collapsed:active, .navbar-toggler.collapsed:focus {
-    background: linear-gradient(90deg, #b51f1f 0%, #260000 100%);
-    outline: none; /* Remove focus outline */
-}
+
+
+
 
 
 /* Set padding for sections explicitly */
@@ -150,23 +205,28 @@
 }
 
 /* Custom button style */
-.custom-btn {
+.hero .custom-btn {
     background-color: #00cc58; /* Green background */
     color: white(208, 213, 210); 
+    width: 270px;
     font-size: 1.25rem; /* Make the button text size match the paragraph */
-    padding: 12px 26px; /* Bigger padding for a larger button */
+    padding: 14px 26px; /* Bigger padding for a larger button */
     border-radius: 8px; /* Rounded corners */
     border: none;
     font-weight: 500; /* Slightly bolder text */
     transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover */
 }
 
-/* Hover effect for the button */
-.custom-btn:hover {
-    background-color: #00ff6a; /* Slightly darker green on hover */
+
+.hero .custom-btn:hover,
+.hero .custom-btn:focus,
+.hero .custom-btn:active {
+    background-color: #00ff6a !important; /* Maintain the original background color */
+    border: none; /* Ensure no border appears */
+    box-shadow: none; /* Remove any default shadow effects */
+    outline: none; /* Remove default outline */
+    transform: scale(1.05); /* Maintain the hover scale effect */
     border: none;
-    transform: scale(1.05); /* Slight scaling on hover */
-    box-shadow: 0px 6px 14px rgba(0, 0, 0, 0.2); /* Add a shadow effect on hover */
 }
 
 
@@ -223,6 +283,13 @@
     background-color: #ffffff; /* Light grey background */
 }
 
+.testimonials-title {
+    font-size: 2.5rem; /* Larger title size */
+    font-weight: 700; /* Bolder title */
+    color: #333; 
+    margin-bottom: 60px;
+}
+
 
 /* Pricing Section */
 .pricing {
@@ -240,7 +307,7 @@
     font-size: 1.05rem; /* Normal text size for the description */
     font-weight: 400;
     color: #666;
-    margin-bottom: 4px !important;
+    margin-bottom: 6px !important;
 }
 
 /* Pricing Box Styles */
@@ -248,7 +315,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between; /* Ensures the button is always aligned at the bottom, with space */
-    height: 500px;
+    height: 470px;
     padding-bottom: 20px; /* Ensures padding at the bottom */
     border-radius: 20px;
     margin: 15px;
@@ -262,14 +329,10 @@
     transform: scale(1.05);
 }
 
-.container h2, .container p {
-    margin-bottom: 20px; /* Improve spacing */
-}
-
 .title {
     width: 100%;
-    padding: 30px 20px;
-    font-size: 1.5em;
+    padding: 30px 10px;
+    font-size: 2.25em;
     font-weight: bold;
     text-align: center;
     background: #f2f2f2;
@@ -283,27 +346,29 @@
     background: #ffffff;
 }
 
-.cost {
+/* Cost and amount styling */
+.box .cost {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    margin-top: 10px;
 }
 
-.amount {
-    font-size: 2.5em;
-    font-weight: bolder;
+/* Larger font for amount */
+.box .amount {
+    font-size: 4rem; /* Make the amount more prominent */
+    font-weight: 900; /* Extra bold for emphasis */
 }
 
-.detail {
-    font-size: 0.8em;
+/* Adjusted detail styling */
+.box .detail {
+    font-size: 1.2rem; /* Slightly increase the detail font size */
     font-weight: bold;
-    color: #7D7C7C;
-    margin-bottom: 0;
+    color: #555555; /* A darker grey for better readability */
+    margin-left: 10px;
 }
 
 .description {
-    margin: 10px auto;
+    margin: 2px auto;
     font-size: 0.9em;
     color: #7D7C7C;
     flex-grow: 1; /* Allow the description to expand evenly in the box */
@@ -342,14 +407,15 @@ li {
 }
 
 
-/* Adjust component alignment */
-.content {
-    display: flex;
-    justify-content: flex-end; /* Align to the right */
-    padding: 0 20px; /* Padding for spacing */
-}
 
 /* FAQ Buttons - No button styling, just bold text */
+.faq-title {
+    font-size: 2.5rem; /* Larger title size */
+    font-weight: 700; /* Bolder title */
+    margin-bottom: 60px !important;
+    color: #333; /* Darker color for visibility */
+}
+
 .faq-question {
     background: none;
     border: none;
@@ -358,12 +424,11 @@ li {
     text-align: left;
     width: 100%;
     padding: 0;
-    font-size: 1.1em;
+    font-size: 1em;
     cursor: pointer;
 }
 
 .faq-question:hover {
-    color: #007bff;
     text-decoration: underline;
 }
 
@@ -383,10 +448,12 @@ li {
 .accordion .faq-question:hover {
     text-decoration: underline;
     cursor: pointer;
-    color: #0056b3; /* Darker blue on hover */
 }
 
-/* Responsive Styles */
+
+/* Responsive Styles for Mobile and Tablet Views */
+
+/* Devices under 970px wide (Small Tablets and Mobile) */
 @media screen and (max-width: 970px) {
     .content {
         display: flex;
@@ -394,42 +461,84 @@ li {
         flex-direction: column;
         margin: 50px auto;
     }
+
     .box {
         margin: 20px 0;
-        height: auto; /* Allow height to adjust for smaller screens */
+        height: auto; /* Adjust height for better mobile view */
     }
-}
 
-@media (max-width: 991.98px) {
+    /* Styling for the Navbar in Mobile/Tablet View */
     .navbar-collapse {
         position: fixed;
         top: 60px;
         width: 100%;
         height: 100%;
-        overflow-y: auto;
         background-color: #e0e0e0;
+        overflow-y: auto;
         z-index: 999;
+        transition: all 0.3s ease;
+        padding: 20px; /* Add padding for better spacing */
     }
 
+    /* Navbar Links Styling for Mobile */
     .navbar-nav {
-        display: block;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         text-align: left;
     }
 
-    .navbar-collapse.show {
-        background-color: #e0e0e0;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
     .nav-link {
-        padding: 15px;
+        padding: 10px 0;
         width: 100%;
         border-bottom: 1px solid #000000;
+        text-align: center; /* Center-align text */
+    }
+
+    /* Adjusting the Navbar Buttons in the Collapsed View */
+    .navbar-nav .nav-link.btn {
+        width: 80%; /* Stretch buttons for mobile view */
+        text-align: center;
+        margin: 10px 0;
     }
 }
 
-/* Desktop View */
+/* Devices under 992px wide (Tablets) */
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        visibility: hidden; /* Initially hidden */
+        opacity: 0;
+        transform: translateY(-100%); /* Slide-up effect when closed */
+        transition: visibility 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .navbar-collapse.show {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0); /* Slide-down effect when opened */
+    }
+
+    /* Flex alignment for navbar links */
+    .navbar-nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .navbar-nav .nav-link {
+        text-align: center;
+        width: 100%;
+    }
+
+    /* Style the buttons to be more suitable for touch devices */
+    .navbar-nav .nav-link.btn {
+        padding: 15px;
+        width: 30%; /* Full-width buttons in mobile view */
+    }
+}
+
+/* Desktop View (Wider than 992px) */
 @media (min-width: 992px) {
     .navbar-nav {
         display: flex;
@@ -437,12 +546,32 @@ li {
         align-items: center;
     }
 
+    /* Flex the navbar for consistent alignment */
     .navbar-collapse {
-        display: flex !important;
-        justify-content: space-between;
+        display: flex !important; /* Ensure the menu is visible */
+        flex-direction: row; /* Horizontal alignment */
+        justify-content: space-between; /* Spread out items */
+        align-items: center; /* Align vertically */
+        visibility: visible !important; /* Ensure visibility */
+        opacity: 1 !important; /* Make sure it's fully opaque */
+        transform: none !important; /* Remove any transforms */
+        transition: none !important; /* Remove transitions */
     }
 
+    /* Hide the navbar toggle button on larger screens */
     .navbar-toggler {
         display: none;
+    }
+
+    /* Navbar links aligned horizontally */
+    .navbar-nav .nav-link {
+        padding: 0 20px;
+        text-align: center;
+    }
+
+    /* Navbar buttons styling for desktop */
+    .navbar-nav .nav-link.btn {
+        padding: 10px 20px;
+        margin-left: 15px;
     }
 }

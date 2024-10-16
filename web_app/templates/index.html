@@ -4,51 +4,63 @@
 
 {% block content %}
 <!-- Top Section -->
-<section class="hero text-left" style="background: url('/static/images/background1.webp') no-repeat center center; background-size: cover; padding: 250px 0; position: relative;">
+<section class="hero text-left"
+    style="background: url('/static/images/background1.webp') no-repeat center center; background-size: cover; padding: 250px 0; position: relative;">
     <div class="container" style="position: relative; z-index: 1;">
         <h1 class="display-4 gradient-text">Trade Smarter.</h1>
         <h1 class="display-4 gradient-text">Profit Like an Insider.</h1>
-        <p class="lead" style="color: black;">Capitalize on the bold moves of political elites and leverage their market-shifting decisions to your advantage.</p>
+        <p class="lead" style="color: black;">Capitalize on the bold moves of political elites and leverage their
+            market-shifting decisions to your advantage.</p>
         <a href="{{ url_for('auth.register') }}" class="btn btn-primary custom-btn">Subscribe Now</a>
     </div>
-    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.1); z-index: 0;"></div>
+    <div
+        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.1); z-index: 0;">
+    </div>
 </section>
 
 <!-- Features Section -->
 <section id="features" class="features">
     <div class="container text-center">
         <h2 class="mb-4">Why Follow Politician Trades?</h2>
-        
+
         <!-- Block 1: Nancy Pelosi: The Queen of Trading -->
         <div class="row mb-5">
             <div class="col-md-4">
-                <div class="feature-box d-flex flex-column justify-content-center align-items-center p-4" 
-                     style="border-radius: 15px; background-color: #f2f2f2; box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); min-height: 350px;">
-                    <h4 class="mb-3 text-center" style="font-weight: bold;">Politicians Outperform the Market – Big Time</h4>
+                <div class="feature-box d-flex flex-column justify-content-center align-items-center p-4"
+                    style="border-radius: 15px; background-color: #f2f2f2; box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); min-height: 350px;">
+                    <h4 class="mb-3 text-center" style="font-weight: bold;">Politicians Outperform the Market – Big Time
+                    </h4>
                     <p class="text-center">
-                        Studies show that U.S. politicians can consistently achieve annual returns of <strong>25%–34%</strong>, far above market averages. Leveraging exclusive access to key information, they consistently outperform Wall Street professionals.
+                        Studies show that U.S. politicians can consistently achieve annual returns of
+                        <strong>25%–34%</strong>, far above market averages. Leveraging exclusive access to key
+                        information, they consistently outperform Wall Street professionals.
                     </p>
                 </div>
             </div>
 
             <!-- Block 2: Politicians Outperform the Market – Big Time -->
             <div class="col-md-4">
-                <div class="feature-box d-flex flex-column justify-content-center align-items-center p-4" 
-                     style="border-radius: 15px; background-color: #f2f2f2; box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); min-height: 350px;">
+                <div class="feature-box d-flex flex-column justify-content-center align-items-center p-4"
+                    style="border-radius: 15px; background-color: #f2f2f2; box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); min-height: 350px;">
                     <h4 class="mb-3 text-center" style="font-weight: bold;">Nancy Pelosi: The Queen of Trading</h4>
                     <p class="text-center">
-                        With a reported net worth of over <strong>$250 million</strong>, Nancy Pelosi has built a fortune that far exceeds her salary as Speaker of the House. Much of her wealth comes from strategic stock trading, raising questions about the advantage of political insiders in the stock market.
+                        With a reported net worth of over <strong>$250 million</strong>, Nancy Pelosi has built a
+                        fortune that far exceeds her salary as Speaker of the House. Much of her wealth comes from
+                        strategic stock trading, raising questions about the advantage of political insiders in the
+                        stock market.
                     </p>
                 </div>
             </div>
 
             <!-- Block 3: Mimicking Their Moves -->
             <div class="col-md-4">
-                <div class="feature-box d-flex flex-column justify-content-center align-items-center p-4" 
-                     style="border-radius: 15px; background-color: #f2f2f2; box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); min-height: 350px;">
+                <div class="feature-box d-flex flex-column justify-content-center align-items-center p-4"
+                    style="border-radius: 15px; background-color: #f2f2f2; box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); min-height: 350px;">
                     <h4 class="mb-3 text-center" style="font-weight: bold;">Mimicking Their Moves</h4>
                     <p class="text-center">
-                        Following politician trades has become so popular that ETFs and financial products are being developed to mimic their portfolios. Politicians move <strong>billions of dollars</strong> in trades annually—tracking them could help you capitalize on their success.
+                        Following politician trades has become so popular that ETFs and financial products are being
+                        developed to mimic their portfolios. Politicians move <strong>billions of dollars</strong> in
+                        trades annually—tracking them could help you capitalize on their success.
                     </p>
                 </div>
             </div>
@@ -59,7 +71,7 @@
 <!-- Testimonials Section -->
 <section id="testimonials" class="testimonials">
     <div class="container text-center">
-        <h2 class="mb-4">What Our Users Say</h2>
+        <h2 class="testimonials-title">What Our Users Say</h2>
         <div class="owl-carousel">
             <blockquote class="blockquote">
                 <p>"PoliticianTrade has completely changed my trading strategy!"</p>
@@ -79,7 +91,10 @@
     <div class="container text-center">
         <h2 class="price-title">Simple, No-Tricks Pricing</h2>
         <p class="mb-4">Pay once, stay informed all year or start with our free tier.</p>
-        <p class="mb-4">Choose between our free tier for monthly updates and newsletters or the annual plan for real-time alerts straight to your inbox. Get instant notifications on trades made by top politicians, including Nancy Pelosi, and stay ahead with minimal effort—no need to check manually; we do the work for you.</p>
+        <p class="mb-4">Choose between our free tier for monthly updates and newsletters or the annual plan for
+            real-time alerts straight to your inbox. Get instant notifications on trades made by top politicians,
+            including Nancy Pelosi, and stay ahead with minimal effort—no need to check manually; we do the work for
+            you.</p>
 
         <div class="d-flex justify-content-center">
             <!-- Free Tier Block -->
@@ -95,7 +110,6 @@
                     <ul>
                         <li>Monthly trade insights</li>
                         <li>Newsletter with key political trading trends</li>
-                        <li>Basic forum access</li>
                     </ul>
                 </div>
                 <div class="button">
@@ -108,7 +122,7 @@
                 <h2 class="title">Annual Membership</h2>
                 <div class="view">
                     <div class="cost d-flex justify-content-center align-items-center">
-                        <p class="amount" style="margin-right: 10px;">$12.99</p>
+                        <p class="amount" style="margin-right: 10px;">$8.99</p>
                         <p class="detail" style="margin-bottom: 0;">per year</p>
                     </div>
                 </div>
@@ -117,7 +131,6 @@
                         <li>Private forum access</li>
                         <li>Member resources</li>
                         <li>Entry to annual conference</li>
-                        <li>Official member t-shirt</li>
                     </ul>
                 </div>
                 <div class="button">
@@ -131,20 +144,23 @@
 <!-- FAQ Section -->
 <section id="faq" class="faq py-5">
     <div class="container text-center">
-        <h2 class="mb-4">Frequently Asked Questions</h2>
+        <h2 class="faq-title">Frequently Asked Questions</h2>
         <div class="accordion" id="faqAccordion">
             <!-- Question 1 -->
             <div class="card">
                 <div class="card-header" id="headingOne">
                     <h5 class="mb-0">
-                        <button class="faq-question" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <button class="faq-question" type="button" data-toggle="collapse" data-target="#collapseOne"
+                            aria-expanded="true" aria-controls="collapseOne">
                             What makes PoliticianTrade different?
                         </button>
                     </h5>
                 </div>
                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#faqAccordion">
                     <div class="card-body">
-                        Our service is straightforward: sign up, and we'll send you instant updates on key trades by prominent politicians, starting with Nancy Pelosi. Our updates are delivered almost instantly, giving you an edge in the market.
+                        Our service is straightforward: sign up, and we'll send you instant updates on key trades by
+                        prominent politicians, starting with Nancy Pelosi. Our updates are delivered almost instantly,
+                        giving you an edge in the market.
                     </div>
                 </div>
             </div>
@@ -153,14 +169,17 @@
             <div class="card">
                 <div class="card-header" id="headingTwo">
                     <h5 class="mb-0">
-                        <button class="faq-question" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <button class="faq-question" type="button" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
                             Can I customize which politician’s trades I track?
                         </button>
                     </h5>
                 </div>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#faqAccordion">
                     <div class="card-body">
-                        Right now, all subscribers automatically track Nancy Pelosi’s trades along with other key politicians. Soon, we’ll offer a feature allowing you to customize which politicians to follow, based on your interests.
+                        Right now, all subscribers automatically track Nancy Pelosi’s trades along with other key
+                        politicians. Soon, we’ll offer a feature allowing you to customize which politicians to follow,
+                        based on your interests.
                     </div>
                 </div>
             </div>
@@ -169,14 +188,16 @@
             <div class="card">
                 <div class="card-header" id="headingThree">
                     <h5 class="mb-0">
-                        <button class="faq-question" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        <button class="faq-question" type="button" data-toggle="collapse" data-target="#collapseThree"
+                            aria-expanded="false" aria-controls="collapseThree">
                             What’s the difference between the free and paid tiers?
                         </button>
                     </h5>
                 </div>
                 <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#faqAccordion">
                     <div class="card-body">
-                        With the free tier, you’ll receive monthly updates and newsletters. The paid annual membership offers real-time alerts, exclusive access to our private forum, and more in-depth resources.
+                        With the free tier, you’ll receive monthly updates and newsletters. The paid annual membership
+                        offers real-time alerts, exclusive access to our private forum, and more in-depth resources.
                     </div>
                 </div>
             </div>
@@ -185,14 +206,16 @@
             <div class="card">
                 <div class="card-header" id="headingFour">
                     <h5 class="mb-0">
-                        <button class="faq-question" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        <button class="faq-question" type="button" data-toggle="collapse" data-target="#collapseFour"
+                            aria-expanded="false" aria-controls="collapseFour">
                             Do you place the trades for me?
                         </button>
                     </h5>
                 </div>
                 <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#faqAccordion">
                     <div class="card-body">
-                        No, you decide what to do with the information we provide. We do not offer services to directly place trades on your behalf, but we equip you with the insights to make informed decisions.
+                        No, you decide what to do with the information we provide. We do not offer services to directly
+                        place trades on your behalf, but we equip you with the insights to make informed decisions.
                     </div>
                 </div>
             </div>
