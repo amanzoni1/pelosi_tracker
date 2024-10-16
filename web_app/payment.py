@@ -36,7 +36,7 @@ def create_checkout_session():
                     'product_data': {
                         'name': 'Subscription',
                     },
-                    'unit_amount': 89900,  # Amount in cents ($899.00)
+                    'unit_amount': 899,
                 },
                 'quantity': 1,
             }],

@@ -1,14 +1,31 @@
 {% extends 'base.html' %}
 
+{% block title %}Your Account{% endblock %}
 {% block content %}
-<div class="container">
-    <h2>Your Account</h2>
-    <p><strong>Email:</strong> {{ user.email }}</p>
-    <p><strong>Subscription Status:</strong> {{ user.subscription_status }}</p>
-    {% if user.subscription_status != 'active' %}
-        <a href="{{ url_for('payment.subscribe') }}" class="btn btn-primary">Subscribe Now</a>
-    {% else %}
-        <p>Your subscription is active until {{ user.subscription_end.strftime('%Y-%m-%d') if user.subscription_end else 'N/A' }}.</p>
-    {% endif %}
+<div class="account-container">
+  <div class="account-box">
+    <h2 class="account-title">Your Account</h2>
+    <div class="account-details">
+      <p><strong>Email:</strong> {{ user.email }}</p>
+      <p><strong>Subscription Status:</strong>
+        {% if user.subscription_status == 'active' %}
+        Subscribed
+        {% else %}
+        Free Tier
+        {% endif %}
+      </p>
+
+      {% if user.subscription_status != 'active' %}
+      <a href="{{ url_for('payment.subscribe') }}" class="btn btn-primary">Upgrade to Member</a>
+
+      {% else %}
+      <p class="account-status">Your subscription is active until {{ user.subscription_end.strftime('%Y-%m-%d') if
+        user.subscription_end else 'N/A' }}.</p>
+      {% endif %}
+    </div>
+    <div class="account-actions">
+      <a href="{{ url_for('auth.logout') }}" class="btn btn-secondary">Log Out</a>
+    </div>
+  </div>
 </div>
 {% endblock %}
