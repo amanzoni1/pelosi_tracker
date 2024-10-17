@@ -94,3 +94,54 @@
 .loading-spinner {
   margin-top: 20px;
 }
+
+
+
+.contact-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e3f2fd, #eceff1); 
+}
+
+.contact-box {
+  background: white;
+  padding: 30px 70px;
+  border-radius: 8px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  text-align: left;
+}
+
+.contact-box h2 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.contact-box .form-group {
+  margin-bottom: 12px;
+}
+
+.contact-box .btn {
+  width: 100%;
+  padding: 10px;
+}
+
+/* Form styles */
+.form-group {
+  margin-bottom: 12px;
+}
+
+.form-group label {
+  font-weight: bold;
+  color: #333;
+}
+
+.form-group .form-control {
+  border-radius: 6px;
+  padding: 8px;
+  font-size: 0.9rem;
+}

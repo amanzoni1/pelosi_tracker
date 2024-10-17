@@ -294,10 +294,6 @@
 
 
 /* Pricing Section */
-.pricing {
-    background-color: #f8f9fa; /* Light grey background */
-}
-
 .price-title {
     font-size: 2.5rem; /* Larger title size */
     font-weight: 700; /* Bolder title */
@@ -411,6 +407,10 @@ ul {
 
 
 /* FAQ Buttons - No button styling, just bold text */
+.faq {
+    background-color: #f8f9fa; /* Light grey background */
+}
+
 .faq-title {
     font-size: 2.5rem; /* Larger title size */
     font-weight: 700; /* Bolder title */

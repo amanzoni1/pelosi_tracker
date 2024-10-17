@@ -41,9 +41,11 @@ def load_user(user_id):
 # Import blueprints
 from .auth import auth_bp
 from .payment import payment_bp
+from .contact import contact_bp
 
 app.register_blueprint(auth_bp)
 app.register_blueprint(payment_bp)
+app.register_blueprint(contact_bp)
 
 @app.route('/')
 def index():
