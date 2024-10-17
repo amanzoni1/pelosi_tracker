@@ -11,14 +11,13 @@ from .forms import RegistrationForm, LoginForm, ForgotPasswordForm, PasswordRese
 from shared.auth_utils import generate_reset_token, verify_reset_token
 from shared.models import User
 from shared.extensions import db, bcrypt
-from shared.emailer import send_transactional_email
+from shared.emailer import send_welcome_email, send_password_reset_email
 
 auth_bp = Blueprint('auth', __name__, url_prefix='/auth')
 
 @auth_bp.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegistrationForm()
-    
     next_page = request.args.get('next')
     
     if form.validate_on_submit():
@@ -36,11 +35,12 @@ def register():
         login_user(user)
         flash('Logged in successfully!', 'success')
 
-        # Redirect based on the 'next' parameter
+        send_welcome_email(user.email, user.email.split('@')[0])
+
         if next_page == 'payment':
-            return redirect(url_for('payment.subscribe'))  # Redirect to payment if requested
+            return redirect(url_for('payment.subscribe')) 
         else:
-            return redirect(url_for('account'))  # Default to account page
+            return redirect(url_for('account'))  
     
     return render_template('register.html', form=form)
 
@@ -74,13 +74,10 @@ def forgot_password():
         user = User.query.filter_by(email=form.email.data).first()
         if user:
             token = generate_reset_token(user.email)
-            reset_url = url_for('auth.reset_password', token=token, _external=True)
-            send_transactional_email(
-                user.email,
-                subject="Password Reset Request",
-                variables={'reset_url': reset_url},
-                is_template=False
-            )
+            reset_link = url_for('auth.reset_password', token=token, _external=True)
+            
+            send_password_reset_email(user.email, user.email.split('@')[0], reset_link)
+
             flash('Password reset instructions have been sent to your email.', 'info')
         else:
             flash('Email not found.', 'danger')

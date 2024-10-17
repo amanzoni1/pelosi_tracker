@@ -17,7 +17,7 @@ from selenium.webdriver.common.by import By
 
 # Import from shared modules
 from shared.utils import CHROME_DRIVER_PATH, BASE_URL, BASE_SAVE_DIR, LAST_NAMES, UPDATE_TEMPLATE_ID
-from shared.emailer import send_transactional_email
+from shared.emailer import send_transactional_email, send_update_email
 from shared.models import User
 from shared.extensions import db
 
@@ -38,13 +38,14 @@ def initialize_webdriver():
 def send_update_emails(analysis_result, last_name):
     with app.app_context():
         active_users = User.query.filter_by(subscription_status='active').all()
+
         for user in active_users:
-            variables = {
-                "last_name": last_name,
-                "analysis_result": analysis_result,
-                "user_name": user.email.split('@')[0],
-            }
-            send_transactional_email(user.email, UPDATE_TEMPLATE_ID, variables)
+            send_update_email(
+                user.email, 
+                user.email.split('@')[0],
+                last_name, 
+                analysis_result
+            )
 
 def scrape_and_download_pdfs():
     driver = initialize_webdriver()

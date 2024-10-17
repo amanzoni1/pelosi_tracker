@@ -10,9 +10,9 @@ from flask_login import login_required, current_user
 from shared.models import User
 from shared.extensions import db
 import stripe
-from shared.utils import STRIPE_PUBLIC_KEY, STRIPE_SECRET_KEY, WELCOME_TEMPLATE_ID
+from shared.utils import STRIPE_PUBLIC_KEY, STRIPE_SECRET_KEY
 from datetime import datetime, timedelta
-from shared.emailer import send_transactional_email
+from shared.emailer import send_purchase_email
 
 payment_bp = Blueprint('payment', __name__, url_prefix='/payment')
 stripe.api_key = STRIPE_SECRET_KEY
@@ -68,12 +68,10 @@ def success():
         current_user.subscription_start = datetime.utcnow()
         current_user.subscription_end = current_user.subscription_start + timedelta(days=365)  # 1-year subscription
         db.session.commit()
+
+        send_purchase_email(current_user.email, current_user.email.split('@')[0])
+
         flash('Subscription successful!', 'success')
-
-        # Send welcome email
-        variables = {'user_name': current_user.email.split('@')[0]}
-        send_transactional_email(current_user.email, WELCOME_TEMPLATE_ID, variables)
-
         return render_template('success.html')
     else:
         flash('Payment not completed.', 'danger')

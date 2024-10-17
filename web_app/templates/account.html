@@ -15,14 +15,29 @@
         {% endif %}
       </p>
 
-      {% if user.subscription_status != 'active' %}
-      <a href="{{ url_for('payment.subscribe') }}" class="btn btn-primary">Upgrade to Member</a>
+      <!-- Display subscription end date above the new text -->
+      {% if user.subscription_status == 'active' %}
+      <p class="account-status">
+        Your subscription is active until {{ user.subscription_end.strftime('%Y-%m-%d') if user.subscription_end else 'N/A' }}.
+      </p>
 
+      <!-- Additional text with custom font and color -->
+      <p class="account-info" style="font-family: 'Georgia', serif; font-style: italic; color: #6c757d; margin-bottom: 60px;">
+        You are subscribed to our full service! You will receive instant updates for trades made by Nancy Pelosi and other key politicians. 
+        If you'd like to track a specific politician or have questions, feel free to <a href="{{ url_for('contact.contact') }}">contact us</a>. 
+        Stay tuned—more features and enhancements are on the way!
+      </p>
       {% else %}
-      <p class="account-status">Your subscription is active until {{ user.subscription_end.strftime('%Y-%m-%d') if
-        user.subscription_end else 'N/A' }}.</p>
+      <!-- Text for Free Tier users -->
+      <p class="account-info" style="font-family: 'Georgia', serif; font-style: italic; color: #6c757d; margin-bottom: 30px; margin-top: 40px;">
+        You are currently on the Free Tier. You will receive monthly updates with key political movements. 
+        For real-time alerts and the complete experience, <strong>upgrade to Member</strong> for instant updates 
+        on politicians like Nancy Pelosi and more.
+      </p>
+      <a href="{{ url_for('payment.subscribe') }}" class="btn btn-primary">Upgrade to Member</a>
       {% endif %}
     </div>
+
     <div class="account-actions">
       <a href="{{ url_for('auth.logout') }}" class="btn btn-secondary">Log Out</a>
     </div>

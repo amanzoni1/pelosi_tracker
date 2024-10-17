@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Unsubscribe Error{% endblock %}
+{% block meta_description %}Error while attempting to unsubscribe from PoliticianTrade's notifications.{% endblock %}
+{% block meta_keywords %}unsubscribe error, PoliticianTrade notifications, stock trading updates{% endblock %}
+
+{% block content %}
+<div class="account-container">
+    <div class="account-box">
+        <h2 class="account-title">Error Unsubscribing</h2>
+        <p class="account-subtitle">We couldn't find the email <strong>{{ email }}</strong> in our records.</p>
+
+        <p class="account-message">Please ensure you are using the correct email or <a href="{{ url_for('contact.contact') }}">contact us</a> for further assistance.</p>
+
+        <a href="{% if current_user.is_authenticated %}{{ url_for('account') }}{% else %}{{ url_for('index') }}{% endif %}" class="btn btn-primary">
+            Return to {{ 'Account' if current_user.is_authenticated else 'Homepage' }}
+        </a>
+    </div>
+</div>
+{% endblock %}

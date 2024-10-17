@@ -5,6 +5,7 @@
     <title>PoliticianTrade - {% block title %}{% endblock %}</title>
     <meta name="description" content="Gain insights from political insiders and make informed trading choices.">
     <meta name="keywords" content="politics, trade, insights, subscription">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl.carousel/1.3.3/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="/static/css/style.css"> 
@@ -16,34 +17,39 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <a class="navbar-brand" >PoliticianTrade.</a>
+        <a class="navbar-brand" href="{% if current_user.is_authenticated %}{{ url_for('account') }}{% else %}{{ url_for('index') }}{% endif %}">
+            PoliticianTrade.
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mx-auto">
+            <ul class="navbar-nav ml-auto">
                 {% if not current_user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('index') }}">Home</a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#pricing">Pricing</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#faq">FAQ</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn navbar-login-btn" href="{{ url_for('auth.login') }}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn navbar-signup-btn" href="{{ url_for('auth.register') }}">Sign Up</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link account-nav-link" href="{{ url_for('account') }}">Account</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('contact.contact') }}">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn account-logout-btn" href="{{ url_for('auth.logout') }}">Log Out</a>
+                    </li>
                 {% endif %}
             </ul>
-            <div class="navbar-nav ml-auto">
-                {% if current_user.is_authenticated %}
-                    <a class="nav-link account-nav-link" href="{{ url_for('account') }}">Account</a>
-                    <a class="nav-link" href="{{ url_for('contact.contact') }}">Contact Us</a>
-                    <a class="nav-link btn account-logout-btn" href="{{ url_for('auth.logout') }}">Log Out</a>
-                {% else %}
-                    <a class="nav-link btn navbar-login-btn" href="{{ url_for('auth.login') }}">Login</a>
-                    <a class="nav-link btn navbar-signup-btn" href="{{ url_for('auth.register') }}">Sign Up</a>
-                {% endif %}
-            </div>
         </div>
     </nav>
 

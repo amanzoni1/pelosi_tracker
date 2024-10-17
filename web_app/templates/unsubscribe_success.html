@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Unsubscribed Successfully{% endblock %}
+{% block meta_description %}You have successfully unsubscribed from PoliticianTrade's notifications.{% endblock %}
+{% block meta_keywords %}unsubscribe, PoliticianTrade notifications, stock trading updates{% endblock %}
+
+{% block content %}
+<div class="account-container">
+    <div class="account-box">
+        <h2 class="account-title">Unsubscribed Successfully</h2>
+        <p class="account-subtitle">You have been successfully unsubscribed from our notifications.</p>
+        
+        <p class="account-message">We are sorry to see you go, <strong>{{ user.email }}</strong>.</p>
+        <p>If this was a mistake, feel free to <a href="{{ url_for('contact.contact') }}">contact us</a>.</p>
+
+        <a href="{% if current_user.is_authenticated %}{{ url_for('account') }}{% else %}{{ url_for('index') }}{% endif %}" class="btn btn-primary">
+            Return to {{ 'Account' if current_user.is_authenticated else 'Homepage' }}
+        </a>
+    </div>
+</div>
+{% endblock %}
