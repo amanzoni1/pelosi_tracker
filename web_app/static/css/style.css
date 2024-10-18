@@ -32,9 +32,9 @@
     font-weight: 400;
     letter-spacing: 0.5px;
     display: flex;
-    margin-top: 12px;
+    margin-top: 8px;
     height: 100%; /* Ensure it takes the full height of the navbar */
-    padding-left: 10px; /* Adjust left padding to ensure good alignment */
+    padding-left: 30px; /* Adjust left padding to ensure good alignment */
 }
 
 .navbar .navbar-nav {
@@ -159,7 +159,6 @@
 
 /* Set padding for sections explicitly */
 .features,
-.testimonials,
 .pricing,
 .faq {
     padding-top: 90px !important; /* Space for fixed navbar */
@@ -211,7 +210,7 @@
     color: white !important; 
     width: 270px;
     font-size: 1.25rem; /* Make the button text size match the paragraph */
-    padding: 14px 26px; /* Bigger padding for a larger button */
+    padding: 16px 26px; /* Bigger padding for a larger button */
     border-radius: 8px; /* Rounded corners */
     border: none;
     font-weight: 500; /* Slightly bolder text */
@@ -313,7 +312,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between; /* Ensures the button is always aligned at the bottom, with space */
-    height: 470px;
+    height: 500px;
     padding-bottom: 20px; /* Ensures padding at the bottom */
     border-radius: 20px;
     margin: 15px;

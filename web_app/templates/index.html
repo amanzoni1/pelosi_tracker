@@ -2,15 +2,22 @@
 
 {% block title %}Welcome to PoliticianTrade{% endblock %}
 
+{% block meta_description %}
+    Discover PoliticianTrade - Gain real-time insights from political elites and capitalize on their market-moving decisions. Stay ahead with our exclusive updates on political trades.
+{% endblock %}
+
+{% block meta_keywords %}
+    politician trades, real-time political insights, Nancy Pelosi trades, stock trading, insider trading, investment alerts, market strategies
+{% endblock %}
+
 {% block content %}
 <!-- Top Section -->
 <section class="hero text-left"
     style="background: url('/static/images/background1.webp') no-repeat center center; background-size: cover; padding: 250px 0; position: relative;">
     <div class="container" style="position: relative; z-index: 1;">
         <h1 class="display-4 gradient-text">Trade Smarter.</h1>
-        <h1 class="display-4 gradient-text">Profit Like an Insider.</h1>
-        <p class="lead" style="color: black;">Capitalize on the bold moves of political elites and leverage their
-            market-shifting decisions to your advantage.</p>
+        <h1 class="display-4 gradient-text">Invest Like an Insider.</h1>
+        <p class="lead" style="color: black;">Leverage the market-shifting decisions of political elites to stay ahead and make smarter investments.</p>
         <a href="{{ url_for('auth.register', next='payment') }}" class="btn hero-btn">Subscribe Now</a>
     </div>
     <div
@@ -72,8 +79,8 @@
 <section id="pricing" class="pricing">
     <div class="container text-center">
         <h2 class="price-title">Simple, No-Tricks Pricing</h2>
-        <p class="mb-4">Pay once, stay informed all year or start with our free tier.</p>
-        <p class="mb-4">Choose between our free tier for monthly updates and newsletters or the annual plan for
+        <p class="mb-4">Pay once, stay informed all year.</p>
+        <p class="mb-4">Choose between our free tier for monthly updates or the annual plan for
             real-time alerts straight to your inbox. Get instant notifications on trades made by top politicians,
             including Nancy Pelosi, and stay ahead with minimal effort—no need to check manually; we do the work for
             you.</p>
@@ -90,8 +97,7 @@
                 </div>
                 <div class="description">
                     <ul>
-                        <li class="price-li">Monthly trade insights</li>
-                        <li class="price-li">Newsletter with key political trading trends</li>
+                        <li class="price-li">Monthly summary of political trades</li>
                     </ul>
                 </div>
                 <div class="button">
@@ -104,15 +110,14 @@
                 <h2 class="title">Annual Membership</h2>
                 <div class="view">
                     <div class="cost d-flex justify-content-center align-items-center">
-                        <p class="amount" style="margin-right: 10px;">$8.99</p>
+                        <p class="amount" style="margin-right: 10px;">$9.99</p>
                         <p class="detail" style="margin-bottom: 0;">per year</p>
                     </div>
                 </div>
                 <div class="description">
                     <ul>
-                        <li class="price-li">Private forum access</li>
-                        <li class="price-li">Member resources</li>
-                        <li class="price-li">Entry to annual conference</li>
+                        <li class="price-li">Monthly summary of political trades</li>
+                        <li class="price-li">Instant alerts for real-time political trades</li>
                     </ul>
                 </div>
                 <div class="button">
@@ -178,8 +183,7 @@
                 </div>
                 <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#faqAccordion">
                     <div class="card-body">
-                        With the free tier, you’ll receive monthly updates and newsletters. The paid annual membership
-                        offers real-time alerts, exclusive access to our private forum, and more in-depth resources.
+                        With the free tier, you’ll receive monthly updates. The paid annual membership offers real-time alerts.
                     </div>
                 </div>
             </div>
@@ -190,11 +194,28 @@
                     <h5 class="mb-0">
                         <button class="faq-question" type="button" data-toggle="collapse" data-target="#collapseFour"
                             aria-expanded="false" aria-controls="collapseFour">
-                            Do you place the trades for me?
+                            Which methods do you use to send notifications?
                         </button>
                     </h5>
                 </div>
                 <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#faqAccordion">
+                    <div class="card-body">
+                        Currently, we send notifications via email. However, we are working on adding other methods like push notifications which will be available soon!
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="card">
+                <div class="card-header" id="headingFive">
+                    <h5 class="mb-0">
+                        <button class="faq-question" type="button" data-toggle="collapse" data-target="#collapseFive"
+                            aria-expanded="false" aria-controls="collapseFive">
+                            Do you place the trades for me?
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#faqAccordion">
                     <div class="card-body">
                         No, you decide what to do with the information we provide. We do not offer services to directly
                         place trades on your behalf, but we equip you with the insights to make informed decisions.

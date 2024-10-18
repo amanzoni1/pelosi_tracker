@@ -97,7 +97,7 @@ def send_password_reset_email(user_email, user_name, reset_link):
 # Function for sending contact form email
 def send_contact_email(name, email, message):
     subject = f"Contact Form Submission from {name}"
-    recipients = 'a.manzoni14@gmail.com' 
+    recipients = 'info@politiciantrade.net' 
     variables = {
         'user_name': name,
         'user_email': email,

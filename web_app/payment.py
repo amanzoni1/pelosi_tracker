@@ -36,7 +36,7 @@ def create_checkout_session():
                     'product_data': {
                         'name': 'Subscription',
                     },
-                    'unit_amount': 899,
+                    'unit_amount': 999,
                 },
                 'quantity': 1,
             }],
