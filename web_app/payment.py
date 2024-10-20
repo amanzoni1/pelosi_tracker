@@ -35,6 +35,7 @@ def create_checkout_session():
                     'currency': 'usd',
                     'product_data': {
                         'name': 'Subscription',
+                        'description': '1-year subscription to PoliticianTrade for real-time political trade updates.'
                     },
                     'unit_amount': 999,
                 },
@@ -43,6 +44,7 @@ def create_checkout_session():
             mode='payment',
             success_url=domain_url + 'payment/success?session_id={CHECKOUT_SESSION_ID}',
             cancel_url=domain_url + 'payment/cancel',
+            billing_address_collection='auto', 
         )
         return jsonify({'sessionId': checkout_session['id']})
     except Exception as e:
