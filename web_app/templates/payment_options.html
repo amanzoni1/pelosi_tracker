@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block title %}Choose Payment Method{% endblock %}
+
+{% block content %}
+<div class="payment-container">
+  <div class="payment-box">
+    <h2 class="payment-title">Select Your Payment Method</h2>
+    <div class="payment-option-buttons">
+      <!-- PayPal Smart Buttons -->
+      <div id="paypal-button-container" class="paypal-button-style"></div>
+    </div>
+  </div>
+</div>
+
+<!-- PayPal SDK Script -->
+<script
+  src="https://www.paypal.com/sdk/js?client-id={{ paypal_client_id }}&currency=USD&components=buttons,funding-eligibility&enable-funding=card"></script>
+
+<script>
+  // Render PayPal Buttons
+  paypal.Buttons({
+    style: {
+      layout: 'vertical',
+      color: 'blue',
+      shape: 'rect',
+      label: 'paypal'
+    },
+    createOrder: function (data, actions) {
+      // Call server to create the order
+      return fetch('/payment/create-order', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).then(function (response) {
+        return response.json();
+      }).then(function (orderData) {
+        if (orderData.id) {
+          return orderData.id;
+        } else {
+          throw new Error('Failed to create order');
+        }
+      });
+    },
+    onApprove: function (data, actions) {
+      // Capture the order on the server
+      return fetch('/payment/capture-order', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ orderID: data.orderID })
+      })
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (captureResult) {
+        if (captureResult.success) {
+          alert('Payment completed successfully!');
+          window.location.href = "{{ url_for('account') }}";
+        } else {
+          alert('Error: ' + captureResult.message);
+        }
+      })
+      .catch(function (err) {
+        console.error('Error during payment finalization:', err);
+        alert('An error occurred while finalizing the payment.');
+      });
+    },
+    onCancel: function (data) {
+      window.location.href = "{{ url_for('payment.payment_options') }}";
+    },
+    onError: function (err) {
+      console.error('Payment error:', err);
+      alert('An error occurred while processing the payment.');
+    }
+  }).render('#paypal-button-container');
+</script>
+{% endblock %}

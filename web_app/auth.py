@@ -30,7 +30,7 @@ def register():
         user = User(email=form.email.data, password_hash=hashed_password)
         db.session.add(user)
         db.session.commit()
-        flash('Account created!!', 'success')
+        flash('Account created!', 'success')
 
         login_user(user)
         flash('Logged in successfully!', 'success')
@@ -38,7 +38,7 @@ def register():
         send_welcome_email(user.email, user.email.split('@')[0])
 
         if next_page == 'payment':
-            return redirect(url_for('payment.subscribe')) 
+            return redirect(url_for('payment.payment_options')) 
         else:
             return redirect(url_for('account'))  
     

@@ -156,3 +156,61 @@
   font-size: 14px;
   margin-bottom: 30px;
 }
+
+
+/* Center the payment box */
+.payment-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e3f2fd, #eceff1); 
+}
+
+/* Style the payment box */
+.payment-box {
+  background: white;
+  padding: 110px;
+  border-radius: 8px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  text-align: left;
+}
+
+/* Title for payment box (centered) */
+.payment-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 70px;
+  text-align: center; /* Center-align the title */
+}
+
+/* PayPal Button Styling */
+.payment-option-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.paypal-button-style {
+  width: 100%;
+  max-width: 350px;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 767.98px) {
+  .payment-box {
+    padding: 40px;
+  }
+
+  .payment-title {
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+  }
+
+  .paypal-button-style {
+    max-width: 90%;
+  }
+}
