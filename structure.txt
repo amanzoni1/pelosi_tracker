@@ -5,6 +5,7 @@ pelosi_tracker/
 │   ├── auth.py
 │   ├── payment.py
 │   ├── forms.py
+│   ├── run_migrations.py
 │   ├── templates/
 │   ├── static/
 │   └── ...
@@ -21,10 +22,14 @@ pelosi_tracker/
 │   ├── extensions.py
 │   ├── emailer.py
 │   └── ...
-├── database/
-│   ├── migrations/
-│   ├── alembic.ini
-│   └── ...
+database/
+├── migrations/
+│   ├── alembic.ini 
+│   ├── env.py
+│   ├── README
+│   ├── script.py.mako
+│   └── versions/
+└── ...
 ├── savedPdf/
 ├── .env
 ├── .flaskenv
