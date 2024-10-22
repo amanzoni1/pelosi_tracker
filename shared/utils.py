@@ -46,4 +46,5 @@ BASE_SAVE_DIR = os.path.join(PROJECT_ROOT, 'savedPdf')
 os.makedirs(BASE_SAVE_DIR, exist_ok=True)
 
 # List of last names to search for
-LAST_NAMES = ['Pelosi', 'McCaul', 'Greene', 'Mullin']
+LAST_NAMES = ['Pelosi']
+LIST_NAMES = ['McCaul', 'Greene', 'Mullin']

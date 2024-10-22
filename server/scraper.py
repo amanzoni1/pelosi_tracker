@@ -16,8 +16,8 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 
 # Import from shared modules
-from shared.utils import CHROME_DRIVER_PATH, BASE_URL, BASE_SAVE_DIR, LAST_NAMES, UPDATE_TEMPLATE_ID
-from shared.emailer import send_transactional_email, send_update_email
+from shared.utils import CHROME_DRIVER_PATH, BASE_URL, BASE_SAVE_DIR, LAST_NAMES
+from shared.emailer import send_update_email
 from shared.models import User
 from shared.extensions import db
 
@@ -35,7 +35,7 @@ def initialize_webdriver():
     driver = webdriver.Chrome(service=service, options=chrome_options)
     return driver
 
-def send_update_emails(analysis_result, last_name):
+def send_update(analysis_result, last_name, pdf_file_path):
     with app.app_context():
         active_users = User.query.filter_by(subscription_status='active').all()
 
@@ -44,7 +44,8 @@ def send_update_emails(analysis_result, last_name):
                 user.email, 
                 user.email.split('@')[0],
                 last_name, 
-                analysis_result
+                analysis_result,
+                pdf_file_path 
             )
 
 def scrape_and_download_pdfs():
@@ -138,7 +139,7 @@ def scrape_and_download_pdfs():
                         analysis_result = analyze_pdf(pdf_path, last_name)
                         if analysis_result:
                             # Send update emails to active subscribers
-                            send_update_emails(analysis_result, last_name)
+                            send_update(analysis_result, last_name, pdf_path)
                     else:
                         print(f"Failed to download {pdf_name}: HTTP {response.status_code}")
                         failed_pdfs.append(pdf_name)

@@ -46,16 +46,14 @@ def send_pdf_text_to_gpt4(pdf_text):
                 {
                     "role": "user",
                     "content": (
-                        "Please summarize the stocks mentioned in the following text. "
-                        "Format the summary as a table with the following columns: "
-                        "Stock Name, Ticker, Action Taken, Quantity of Shares, and Amount of Transaction. "
-                        "If the text is incoherent, provide the biggest move by amount and any other relevant insights:\n\n"
+                        "Summarize the stock information in a concise narrative, mentioning the stock name, ticker, "
+                        "action, share quantity, and transaction amount. Highlight the largest transaction if unclear:\n\n"
                         f"{pdf_text}"
                     )
                 }
             ],
-            max_tokens=300,
-            temperature=0.5
+            max_tokens=400, 
+            temperature=0.5  
         )
         return response.choices[0].message.content.strip()
     except Exception as e:

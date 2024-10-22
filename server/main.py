@@ -15,7 +15,7 @@ def job():
     scrape_and_download_pdfs()
 
 if __name__ == "__main__":
-    schedule.every(30).seconds.do(job)
+    schedule.every(20).seconds.do(job)
 
     while True:
         schedule.run_pending()

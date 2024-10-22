@@ -26,8 +26,8 @@ def payment_options():
     return render_template('payment_options.html', paypal_client_id=PAYPAL_CLIENT_ID)
 
 def get_paypal_access_token():
-    PAYPAL_OAUTH_API = "https://api-m.sandbox.paypal.com/v1/oauth2/token"
-    # PAYPAL_OAUTH_API = "https://api-m.paypal.com/v1/oauth2/token"
+    # PAYPAL_OAUTH_API = "https://api-m.sandbox.paypal.com/v1/oauth2/token"
+    PAYPAL_OAUTH_API = "https://api-m.paypal.com/v1/oauth2/token"
     auth = (PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET)
     headers = {'Accept': 'application/json', 'Accept-Language': 'en_US'}
     data = {'grant_type': 'client_credentials'}
@@ -65,8 +65,8 @@ def create_order():
                 "shipping_preference": "NO_SHIPPING"
             }
         }
-        create_order_url = "https://api-m.sandbox.paypal.com/v2/checkout/orders"
-        # create_order_url = "https://api-m.paypal.com/v2/checkout/orders"
+        # create_order_url = "https://api-m.sandbox.paypal.com/v2/checkout/orders"
+        create_order_url = "https://api-m.paypal.com/v2/checkout/orders"
 
         response = requests.post(create_order_url, headers=headers, json=order_payload)
         if response.status_code == 201:
@@ -93,8 +93,8 @@ def capture_order():
             "Content-Type": "application/json",
             "Authorization": f"Bearer {access_token}"
         }
-        capture_url = f"https://api-m.sandbox.paypal.com/v2/checkout/orders/{order_id}/capture"
-        # capture_url = f"https://api-m.paypal.com/v2/checkout/orders/{order_id}/capture"
+        # capture_url = f"https://api-m.sandbox.paypal.com/v2/checkout/orders/{order_id}/capture"
+        capture_url = f"https://api-m.paypal.com/v2/checkout/orders/{order_id}/capture"
         response = requests.post(capture_url, headers=headers)
         if response.status_code in [200, 201]:
             capture_data = response.json()
