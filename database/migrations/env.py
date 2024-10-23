@@ -1,3 +1,5 @@
+# database/migrations/env.py
+
 import os
 import sys
 from logging.config import fileConfig
@@ -7,22 +9,24 @@ from sqlalchemy import pool
 
 from alembic import context
 
-
 config = context.config
-
-if config.config_file_name is not None:
-    fileConfig(config.config_file_name)
 
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 sys.path.insert(0, PROJECT_ROOT)
 
-from shared.models import * 
-from shared.extensions import db
+if config.config_file_name is not None:
+    fileConfig(config.config_file_name)
 
+from shared.extensions import db
+from shared.models import User  
+
+print("Tables in db.metadata:")
+print(db.metadata.tables.keys())
 
 target_metadata = db.metadata
 
-
+def get_url():
+    return os.environ.get("DATABASE_URL")
 
 def get_url():
     return os.environ.get("DATABASE_URL")
