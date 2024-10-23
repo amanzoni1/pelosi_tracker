@@ -22,14 +22,12 @@ pelosi_tracker/
 │   ├── extensions.py
 │   ├── emailer.py
 │   └── ...
-database/
-├── migrations/
-│   ├── alembic.ini 
-│   ├── env.py
-│   ├── README
-│   ├── script.py.mako
-│   └── versions/
-└── ...
+├── database/
+│   ├── alembic.ini
+│   ├── migrations/
+│   │   ├── env.py
+│   │   ├── script.py.mako
+│   │   └── versions/
 ├── savedPdf/
 ├── .env
 ├── .flaskenv

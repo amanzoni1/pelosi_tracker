@@ -13,7 +13,7 @@ from shared.utils import DATABASE_URL
 
 def run_migrations():
     # Path to your alembic.ini file in the migrations directory
-    alembic_cfg = Config(os.path.join(PROJECT_ROOT, 'database', 'migrations', 'alembic.ini'))
+    alembic_cfg = Config(os.path.join(PROJECT_ROOT, 'database', 'alembic.ini'))
     command.upgrade(alembic_cfg, "head")
 
 if __name__ == "__main__":
