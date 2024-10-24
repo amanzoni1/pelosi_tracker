@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 
+/* Reset and Base Styles */
 * {
     margin: 0;
     padding: 0;
@@ -7,34 +8,30 @@
     font-family: "Poppins", sans-serif;
 }
 
-/* body {
-    background-color: #ffffff; 
-} */
-
 /* Navigation Styles */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #e0e0e0;
+    background-color: #2C3E50; /* Updated to Dark Blue */
     position: fixed;
     width: 100%;
     height: 60px;
     z-index: 1000;
     padding: 0 20px;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow below the navbar */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
 .navbar-brand {
     font-family: 'Great Vibes', cursive;
-    font-size: 2rem; /* Adjust the font size as needed */
-    color: #000000;
+    font-size: 2rem;
+    color: #ECF0F1; /* Light Grey for contrast */
     font-weight: 400;
     letter-spacing: 0.5px;
     display: flex;
-    margin-top: 8px;
-    height: 100%; /* Ensure it takes the full height of the navbar */
-    padding-left: 30px; /* Adjust left padding to ensure good alignment */
+    align-items: center;
+    height: 100%;
+    padding-left: 30px;
 }
 
 .navbar .navbar-nav {
@@ -43,17 +40,15 @@
 }
 
 .nav-link {
-    color: #000000;
+    color: #ECF0F1; /* Light Grey for links */
     padding: 15px;
-    font-weight: bold;
+    font-weight: 500; /* Slightly less bold for elegance */
     text-align: center;
+    transition: color 0.3s ease;
 }
 
-/* Fix: Set the height to ensure items align consistently */
-.navbar-nav .nav-item {
-    display: flex;
-    align-items: center;
-    height: 60px; /* Ensure the nav items align with the navbar height */
+.nav-link:hover {
+    color: #E74C3C; /* Accent Color on hover */
 }
 
 /* Navbar Button Styles */
@@ -73,40 +68,37 @@
     height: 40px; /* Consistent height */
 }
 
-/* Hover effect for navbar buttons */
 .navbar-nav .nav-link.btn:hover {
     background: linear-gradient(90deg, #ce2a2a 0%, #800101 100%);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow on hover */
 }
 
-
 /* Navbar Toggler (Burger Menu) Button Styles */
 .navbar-toggler {
     width: 40px;
     height: 40px;
-    border: 2px solid #b51f1f !important;
-    border-radius: 8px;
-    /* border-image-slice: 1; */
-    background-color: white;
+    border: 2px solid #ECF0F1 !important; /* Light Grey border */
+    border-radius: 6px;
+    background-color: #2C3E50; /* Dark Blue background */
     transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0; /* Ensure there is no padding for better alignment */
+    padding: 0;
 }
 
 .navbar-toggler:focus {
     outline: none;
-    box-shadow: none; /* Removes the blue glow/shadow */
-    border-color: #b51f1f; /* Keep the same red border */
+    box-shadow: none;
+    border-color: #E74C3C; /* Accent Color border on focus */
 }
 
 /* Navbar Toggler Icon (Burger Lines) */
 .navbar-toggler-icon {
     width: 24px;
     height: 2px;
-    background-color: #b51f1f;
+    background-color: #ECF0F1;
     display: inline-block;
     position: relative;
     transition: all 0.3s ease;
@@ -117,18 +109,18 @@
     content: '';
     width: 24px;
     height: 2px;
-    background-color: #b51f1f; /* Same color for consistency */
+    background-color: #ECF0F1;
     position: absolute;
-    left: 0; /* Align to the left */
+    left: 0;
     transition: all 0.3s ease;
 }
 
 .navbar-toggler-icon::before {
-    top: -8px; /* Proper spacing for the top line */
+    top: -8px;
 }
 
 .navbar-toggler-icon::after {
-    top: 8px; /* Proper spacing for the bottom line */
+    top: 8px;
 }
 
 /* When the menu is open (X icon) */
@@ -148,162 +140,147 @@
 
 /* Hover and Active state for the collapsed burger button */
 .navbar-toggler.collapsed:hover {
-    background-color: #f8f8f8; /* Slightly darker background on hover */
-    border-color: #b51f1f;
+    background-color: #34495E; /* Slightly darker blue on hover */
+    border-color: #E74C3C;
 }
 
-
-
-
-
-
-/* Set padding for sections explicitly */
+/* Sections Padding */
 .features,
 .pricing,
 .faq {
-    padding-top: 90px !important; /* Space for fixed navbar */
-    padding-bottom: 60px !important; /* Bottom padding */
+    padding-top: 90px !important;
+    padding-bottom: 60px !important;
 }
-
 
 /* Hero Section */
 .hero {
-    padding: 180px 0; /* Tall hero section */
-    text-align: left; /* Left-align text */
-    color: #fff;
+    padding: 160px 0; /* Slightly reduced padding for modern look */
+    text-align: left;
+    color: #2C3E50; /* Dark Blue text */
     display: flex;
     justify-content: flex-start;
+    background-color: #ECF0F1; /* Soft Grey background */
 }
 
 .hero .container {
-    width: 60%; /* Set container width to half of the page */
+    width: 60%;
     margin-left: 70px;
-    position: relative; /* Keep relative positioning for z-index */
+    position: relative;
     z-index: 1;
 }
 
-/* Hero Section Title */
 .hero .display-4 {
-    font-size: 4rem; /* Large title */
-    font-weight: 900; /* Very bold for strong emphasis */
+    font-size: 3.5rem; /* Slightly smaller for elegance */
+    font-weight: 900;
 }
 
-/* Gradient text effect for title */
 .gradient-text {
-    background: linear-gradient(90deg, #b51f1f 0%, #000000 100%);
+    background: linear-gradient(90deg, #E74C3C 0%, #2C3E50 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
 
-
-/* Hero Subtitle */
 .hero p {
-    font-size: 1.25rem; /* Slightly larger font size */
-    font-weight: 500; /* Bold font for subtitle */
-    color: #2c2c2c; /* Darker grey for readability */
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #34495E; /* Darker Grey for readability */
 }
 
-/* Custom button style */
 .hero-btn {
-    background-color: #00cc58 !important; /* Green background */
+    background-color: #00cc58 !important; 
     color: white !important; 
     width: 270px;
-    font-size: 1.25rem; /* Make the button text size match the paragraph */
-    padding: 16px 26px; /* Bigger padding for a larger button */
-    border-radius: 8px; /* Rounded corners */
+    font-size: 1.25rem;
+    padding: 14px 24px;
+    border-radius: 6px;
     border: none;
-    font-weight: 500; /* Slightly bolder text */
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover */
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 
 .hero-btn:hover,
 .hero-btn:focus,
 .hero-btn:active {
-    background-color: #00ff6a !important; /* Maintain the original background color */
+    background-color: #00ff6a !important; 
     color: white;
-    border: none; /* Ensure no border appears */
-    box-shadow: none; /* Remove any default shadow effects */
-    outline: none; /* Remove default outline */
-    transform: scale(1.05); /* Maintain the hover scale effect */
-    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+    outline: none;
 }
-
 
 /* Features Section */
 .features {
-    background-color: #f8f9fa; /* Light grey background */
+    background-color: #ECF0F1; /* Soft Grey background */
 }
 
 .features h2 {
-    font-size: 2.5rem; /* Larger title size */
-    font-weight: 700; /* Bolder title */
+    font-size: 2.5rem;
+    font-weight: 700;
     margin-bottom: 60px !important;
-    color: #333; /* Darker color for visibility */
+    color: #2C3E50;
 }
 
 .features .row {
-    display: flex; /* Use flexbox to align items */
-    flex-wrap: wrap; /* Allow boxes to wrap when screen size changes */
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .feature-box {
-    background-color: #ffffff !important; /* Make boxes white */
-    border-radius: 15px; /* Keep rounded corners */
+    background-color: #FFFFFF !important;
+    border-radius: 12px; /* Slightly reduced for modern look */
     padding: 20px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Adjusted shadow for more visibility */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover transition */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     min-height: 350px;
-    flex-grow: 1; /* Allow boxes to grow equally */
+    flex-grow: 1;
     display: flex;
-    flex-direction: column; /* Ensures the box content flows vertically */
-    justify-content: space-between; /* Space content evenly */
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .feature-box:hover {
-    transform: scale(1.05); /* Slight scale on hover */
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
 .feature-box h4 {
     font-weight: bold;
-    color: #333; /* Keep text dark */
+    color: #2C3E50;
     text-align: center;
 }
 
 .feature-box p {
-    font-size: 1rem; /* Slightly larger font */
-    color: #666; /* Lighter grey for readability */
-    text-align: center; /* Ensure center-aligned text */
+    font-size: 1rem;
+    color: #7F8C8D; /* Lighter Grey */
+    text-align: center;
     margin-bottom: 20px;
 }
 
 /* Testimonials Section */
 .testimonials {
-    background-color: #ffffff; /* Light grey background */
+    background-color: #FFFFFF; /* White background */
 }
 
 .testimonials-title {
-    font-size: 2.5rem; /* Larger title size */
-    font-weight: 700; /* Bolder title */
-    color: #333; 
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2C3E50;
     margin-bottom: 60px;
 }
 
-
 /* Pricing Section */
 .price-title {
-    font-size: 2.5rem; /* Larger title size */
-    font-weight: 700; /* Bolder title */
-    color: #333; 
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2C3E50;
     margin-bottom: 20px;
 }
 
 .pricing p {
-    font-size: 1.05rem; /* Normal text size for the description */
+    font-size: 1.05rem;
     font-weight: 400;
-    color: #666;
+    color: #7F8C8D;
     margin-bottom: 6px !important;
 }
 
@@ -311,13 +288,12 @@
 .box {
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Ensures the button is always aligned at the bottom, with space */
-    height: 500px;
-    padding-bottom: 20px; /* Ensures padding at the bottom */
-    border-radius: 20px;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    border-radius: 15px; /* Slightly rounded corners */
     margin: 15px;
-    background: #ffffff;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    background: #FFFFFF;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s;
     margin-top: 60px;
 }
@@ -332,15 +308,16 @@
     font-size: 2.25em;
     font-weight: bold;
     text-align: center;
-    background: #f2f2f2;
+    background: #dbdbdb;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
+    color: #2C3E50;
 }
 
 .view {
     display: block;
     width: 100%;
-    background: #ffffff;
+    background: #FFFFFF;
 }
 
 /* Cost and amount styling */
@@ -350,17 +327,16 @@
     flex-direction: column;
 }
 
-/* Larger font for amount */
 .box .amount {
-    font-size: 4rem; /* Make the amount more prominent */
-    font-weight: 900; /* Extra bold for emphasis */
+    font-size: 4rem;
+    font-weight: 900;
+    color: #2C3E50;
 }
 
-/* Adjusted detail styling */
 .box .detail {
-    font-size: 1.2rem; /* Slightly increase the detail font size */
+    font-size: 1.2rem;
     font-weight: bold;
-    color: #555555; /* A darker grey for better readability */
+    color: #34495E;
     margin-left: 10px;
 }
 
@@ -368,7 +344,7 @@
     margin: 2px auto;
     font-size: 0.9em;
     color: #7D7C7C;
-    flex-grow: 1; /* Allow the description to expand evenly in the box */
+    flex-grow: 1;
 }
 
 ul {
@@ -382,64 +358,63 @@ ul {
 
 /* Pricing Section Button Styles */
 .pricing-btn {
-    background-color: #00cc58; /* Green background */
-    color: white; /* White text */
-    width: 100%;
-    height: 78px;
-    font-size: 1.5rem; /* Larger text size */
-    display: flex; /* Flexbox for centering */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    border: none;
-    border-radius: 0;
-    font-weight: 500;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Remove transform effect */
-}
-
-/* Hover effect for pricing button */
-.pricing-btn:hover {
-    background-color: #00ff6a; /* Lighter green on hover */
+    background-color: #00cc58;
     color: white;
-    box-shadow: 0px 6px 14px rgba(0, 0, 0, 0.2); /* Shadow effect on hover */
+    width: 100%;
+    height: 50px; /* Reduced height for modern look */
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 6px; /* Rounded corners */
+    font-weight: 500;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+.pricing-btn:hover {
+    background-color: #00ff6a;
+    color: white;
+    box-shadow: 0px 6px 14px rgba(0, 0, 0, 0.2);
+}
 
-
-/* FAQ Buttons - No button styling, just bold text */
+/* FAQ Section */
 .faq {
-    background-color: #f8f9fa; /* Light grey background */
+    background-color: #ECF0F1; /* Soft Grey background */
 }
 
 .faq-title {
-    font-size: 2.5rem; /* Larger title size */
-    font-weight: 700; /* Bolder title */
+    font-size: 2.5rem;
+    font-weight: 700;
     margin-bottom: 60px !important;
-    color: #333; /* Darker color for visibility */
+    color: #2C3E50;
 }
 
 .faq-question {
     background: none;
     border: none;
-    color: #333; /* Darker text color */
+    color: #2C3E50;
     font-weight: bold;
     text-align: left;
     width: 100%;
     padding: 0;
     font-size: 1em;
     cursor: pointer;
+    transition: color 0.3s ease;
 }
 
 .faq-question:hover {
+    color: #E74C3C; /* Accent Color on hover */
     text-decoration: underline;
 }
 
 .faq-question:focus {
-    outline: none; /* Remove outline on focus */
+    outline: none;
 }
 
 .accordion .card-header {
-    background-color: #f8f9fa;
-    border-bottom: 1px solid #ddd;
+    background-color: #ECF0F1;
+    border-bottom: 1px solid #BDC3C7;
 }
 
 .accordion .card-body {
@@ -450,7 +425,6 @@ ul {
     text-decoration: underline;
     cursor: pointer;
 }
-
 
 /* Responsive Styles for Mobile and Tablet Views */
 
@@ -465,7 +439,7 @@ ul {
 
     .box {
         margin: 20px 0;
-        height: auto; /* Adjust height for better mobile view */
+        height: auto;
     }
 
     /* Styling for the Navbar in Mobile/Tablet View */
@@ -474,11 +448,11 @@ ul {
         top: 60px;
         width: 100%;
         height: 100%;
-        background-color: #e0e0e0;
+        background-color: #2C3E50; /* Dark Blue background */
         overflow-y: auto;
         z-index: 999;
         transition: all 0.3s ease;
-        padding: 20px; /* Add padding for better spacing */
+        padding: 20px;
     }
 
     /* Navbar Links Styling for Mobile */
@@ -492,13 +466,13 @@ ul {
     .nav-link {
         padding: 10px 0;
         width: 100%;
-        border-bottom: 1px solid #000000;
-        text-align: center; /* Center-align text */
+        border-bottom: 1px solid #ECF0F1; /* Light Grey border */
+        text-align: center;
     }
 
     /* Adjusting the Navbar Buttons in the Collapsed View */
     .navbar-nav .nav-link.btn {
-        width: 80%; /* Stretch buttons for mobile view */
+        width: 80%;
         text-align: center;
         margin: 10px 0;
     }
@@ -507,16 +481,16 @@ ul {
 /* Devices under 992px wide (Tablets) */
 @media (max-width: 991.98px) {
     .navbar-collapse {
-        visibility: hidden; /* Initially hidden */
+        visibility: hidden;
         opacity: 0;
-        transform: translateY(-100%); /* Slide-up effect when closed */
+        transform: translateY(-100%);
         transition: visibility 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
     }
 
     .navbar-collapse.show {
         visibility: visible;
         opacity: 1;
-        transform: translateY(0); /* Slide-down effect when opened */
+        transform: translateY(0);
     }
 
     /* Flex alignment for navbar links */
@@ -535,7 +509,7 @@ ul {
     /* Style the buttons to be more suitable for touch devices */
     .navbar-nav .nav-link.btn {
         padding: 15px;
-        width: 30%; /* Full-width buttons in mobile view */
+        width: 80%; /* Full-width buttons in mobile view */
     }
 }
 
@@ -549,14 +523,14 @@ ul {
 
     /* Flex the navbar for consistent alignment */
     .navbar-collapse {
-        display: flex !important; /* Ensure the menu is visible */
-        flex-direction: row; /* Horizontal alignment */
-        justify-content: space-between; /* Spread out items */
-        align-items: center; /* Align vertically */
-        visibility: visible !important; /* Ensure visibility */
-        opacity: 1 !important; /* Make sure it's fully opaque */
-        transform: none !important; /* Remove any transforms */
-        transition: none !important; /* Remove transitions */
+        display: flex !important;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        visibility: visible !important;
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
     }
 
     /* Hide the navbar toggle button on larger screens */
