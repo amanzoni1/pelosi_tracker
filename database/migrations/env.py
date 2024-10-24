@@ -20,9 +20,6 @@ if config.config_file_name is not None:
 from shared.extensions import db
 from shared.models import User  
 
-print("Tables in db.metadata:")
-print(db.metadata.tables.keys())
-
 target_metadata = db.metadata
 
 def get_url():

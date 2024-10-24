@@ -1,6 +1,7 @@
 import os
 import sys
 import logging
+import traceback
 
 # Set up basic logging
 logging.basicConfig(level=logging.INFO)
@@ -10,15 +11,13 @@ logger = logging.getLogger(__name__)
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 sys.path.insert(0, PROJECT_ROOT)
 
-from alembic import command
-from alembic.config import Config
-
 def run_migrations():
     logger.info("Starting migrations...")
 
     # Path to alembic.ini
     alembic_cfg_path = os.path.join(PROJECT_ROOT, 'database', 'alembic.ini')
     logger.info(f"Alembic config path: {alembic_cfg_path}")
+    from alembic.config import Config
     alembic_cfg = Config(alembic_cfg_path)
 
     # Set script_location explicitly
@@ -38,15 +37,18 @@ def run_migrations():
         sys.exit(1)
 
     try:
-        # Stamp the database to 'base' or 'head' to synchronize versions
-        command.stamp(alembic_cfg, 'base')
-        logger.info("Stamped database to base.")
+        # Remove the stamp command
+        # Only run the upgrade command
+        from alembic import command
 
-        # Now run the upgrade to apply migrations
+        # Run migrations
+        logger.info("Running alembic upgrade head")
         command.upgrade(alembic_cfg, "head")
         logger.info("Migrations completed successfully.")
+
     except Exception as e:
         logger.exception("Error during migrations:")
+        traceback.print_exc()
         sys.exit(1)
 
 if __name__ == "__main__":
