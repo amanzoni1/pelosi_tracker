@@ -4,7 +4,15 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(135deg, #e3f2fd, #eceff1); /* Light background */
+    background: url('/static/images/background.svg') no-repeat center center;
+    background-size: cover;
+    /* Ensures the background covers the container */
+    background-attachment: fixed;
+    /* Optional: Makes the background fixed during scroll */
+    padding: 20px;
+    /* Adds some padding for smaller screens */
+    box-sizing: border-box;
+    /* Ensures padding is included in the element's total width and height */
 }
 
 /* Style the registration box */
@@ -16,6 +24,8 @@
     width: 100%;
     max-width: 400px;
     text-align: center;
+    box-sizing: border-box;
+    /* Ensures padding is included in the width */
 }
 
 /* Title and subtitle */
@@ -27,8 +37,9 @@
 }
 
 .register-subtitle {
-    font-size: 0.85rem; /* Slightly smaller subtitle */
-    margin-bottom: 22px; 
+    font-size: 0.85rem;
+    /* Slightly smaller subtitle */
+    margin-bottom: 22px;
 }
 
 .register-subtitle a {
@@ -42,14 +53,17 @@
 
 /* Input fields */
 .form-group {
-    margin-bottom: 12px; /* Reduced margin for more compact fields */
-    text-align: left; /* Align the labels and input fields to the left */
+    margin-bottom: 12px;
+    /* Reduced margin for more compact fields */
+    text-align: left;
+    /* Align the labels and input fields to the left */
 }
 
 .form-group label {
     font-weight: 600;
     color: #333;
-    font-size: 0.9rem; /* Slightly smaller label font */
+    font-size: 0.9rem;
+    /* Slightly smaller label font */
     margin-bottom: 2px;
 }
 
@@ -101,7 +115,8 @@
 /* Icons for validation */
 .password-requirements .icon {
     margin-right: 4px;
-    font-size: 0.6rem; /* Larger icon size */
+    font-size: 0.6rem;
+    /* Larger icon size */
 }
 
 /* Invalid criteria - Red by default */

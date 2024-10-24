@@ -154,7 +154,10 @@
 
 /* Hero Section */
 .hero {
-    padding: 160px 0; /* Slightly reduced padding for modern look */
+    background: url('/static/images/background.svg') no-repeat center center;
+    background-size: cover;
+    padding: 250px 0 100px 0;
+    position: relative;
     text-align: left;
     color: #2C3E50; /* Dark Blue text */
     display: flex;
@@ -162,15 +165,16 @@
     background-color: #ECF0F1; /* Soft Grey background */
 }
 
+
 .hero .container {
-    width: 60%;
+    width: 70%;
     margin-left: 70px;
     position: relative;
     z-index: 1;
 }
 
 .hero .display-4 {
-    font-size: 3.5rem; /* Slightly smaller for elegance */
+    font-size: 4.75rem; /* Slightly smaller for elegance */
     font-weight: 900;
 }
 
@@ -182,17 +186,17 @@
 }
 
 .hero p {
-    font-size: 1.1rem;
+    font-size: 1.4rem;
     font-weight: 500;
-    color: #34495E; /* Darker Grey for readability */
+    color: #34495E !important; /* Darker Grey for readability */
 }
 
 .hero-btn {
     background-color: #00cc58 !important; 
     color: white !important; 
     width: 270px;
-    font-size: 1.25rem;
-    padding: 14px 24px;
+    font-size: 1.4rem;
+    padding: 18px 24px;
     border-radius: 6px;
     border: none;
     font-weight: 500;
