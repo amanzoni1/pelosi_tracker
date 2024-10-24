@@ -1,0 +1,13 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /login/
+Disallow: /signup/
+Disallow: /account/
+Disallow: /unsubscribe/
+Disallow: /static/
+Disallow: /database/
+Disallow: /server/
+Disallow: /savedPdf/
+Allow: /
+
+Sitemap: https://politiciantrade.net/sitemap.xml

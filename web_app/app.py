@@ -9,7 +9,7 @@ from datetime import datetime
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 sys.path.insert(0, PROJECT_ROOT)
 
-from flask import Flask, render_template, request, make_response, jsonify
+from flask import Flask, render_template, request, make_response, jsonify, send_from_directory
 from flask_login import LoginManager, current_user, login_required
 from flask_migrate import Migrate
 from flask_bcrypt import Bcrypt
@@ -53,6 +53,16 @@ app.register_blueprint(unsubscribe_bp)
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route('/robots.txt')
+def robots_txt():
+    # Path to the project root directory
+    return send_from_directory(PROJECT_ROOT, 'robots.txt', mimetype='text/plain')
+
+@app.route('/sitemap.xml')
+def sitemap_xml():
+    # Path to the project root directory
+    return send_from_directory(PROJECT_ROOT, 'sitemap.xml', mimetype='application/xml')
 
 @app.route('/account')
 @login_required

@@ -54,7 +54,7 @@ def create_order():
             "purchase_units": [{
                 "amount": {
                     "currency_code": "USD",
-                    "value": "9.99"
+                    "value": "7.99"
                 },
                 "description": "1-year subscription to PoliticianTrade",
             }],
