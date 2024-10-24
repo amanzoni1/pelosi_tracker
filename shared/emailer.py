@@ -7,6 +7,8 @@ import logging
 import base64
 import os
 
+BASE_URL = 'https://politiciantrade.net'
+
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -100,9 +102,7 @@ def send_contact_email(name, email, message):
 # Function for sending monthly update email
 def send_update_email(user_email, user_name, last_name, analysis_result, pdf_file_path=None):
     subject = f"PoliticianTrade Update: New Trade by {last_name}"
-
-    unsubscribe_link = f"http://127.0.0.1:5000/unsubscribe/{user_email}"  # Change to production URL when deployed
-
+    unsubscribe_link = f"{BASE_URL}/unsubscribe/{user_email}"
     variables = {
         'user_name': user_name,
         'last_name': last_name,

@@ -35,7 +35,8 @@ PAYPAL_CLIENT_ID = os.environ.get('PAYPAL_CLIENT_ID')
 PAYPAL_CLIENT_SECRET = os.environ.get('PAYPAL_CLIENT_SECRET')
 
 # Path to the ChromeDriver executable
-CHROME_DRIVER_PATH = os.environ.get('CHROME_DRIVER_PATH')
+# CHROME_DRIVER_PATH = os.path.join(PROJECT_ROOT, 'chromedriver', 'chromedriver')
+CHROME_DRIVER_PATH = '/usr/bin/chromedriver'
 
 # Base URL for scraping
 BASE_URL = os.environ.get('BASE_URL', 'https://disclosures-clerk.house.gov/FinancialDisclosure')

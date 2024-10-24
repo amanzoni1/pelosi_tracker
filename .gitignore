@@ -100,6 +100,4 @@ __pycache__/
 .flaskenv
 
 # Ignore saved PDFs, chromedriver, and old files
-savedPdf/
-chromedriver/
 old_file/

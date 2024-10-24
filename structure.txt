@@ -29,6 +29,8 @@ pelosi_tracker/
 │   │   ├── script.py.mako
 │   │   └── versions/
 ├── savedPdf/
+├── chromedriver/
+│   └── chromedriver
 ├── .env
 ├── .flaskenv
 ├── .gitignore
